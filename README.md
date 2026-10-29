@@ -187,5 +187,4 @@ npm run build
 ## 🏛️ Hak Cipta & Lisensi
 
 © 2026 Pemerintah Kota Samarinda.  
-Dinas Perumahan dan Kawasan Permukiman Kota Samarinda.  
-*Aman • Tertib • Terdata*
+Dinas Perumahan dan Kawasan Permukiman Kota Samarinda.

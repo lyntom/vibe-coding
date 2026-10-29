@@ -76,5 +76,4 @@ location / {
 ## 🏛️ Hak Cipta & Standar
 
 © 2026 Pemerintah Kota Samarinda.  
-Dinas Perumahan dan Kawasan Permukiman Kota Samarinda.  
-*Terintegrasi Standar SPBE • Aman • Tertib • Terdata*
+Dinas Perumahan dan Kawasan Permukiman Kota Samarinda.
