@@ -1,0 +1,161 @@
+# SCHEMA.md — Skema Data, Kontrak TypeScript, & Arsitektur Penyimpanan
+
+Dokumen ini mendefinisikan struktur data untuk **Fase 1 (MVP LocalStorage)** sesuai `prd.md` dan menyelaraskannya dengan atribut tampilan pada `code.html` dan `code_2.html`.
+
+---
+
+## 1. KONFIGURASI KUNCI PENYIMPANAN (STORAGE KEYS)
+
+Seluruh persistensi lokal pada peramban wajib menggunakan kunci berikut:
+- **Data Buku Tamu Utama:** `etamu_disperkim_guests_v1` (`localStorage`)
+- **Sesi Autentikasi Admin:** `etamu_disperkim_auth_session_v1` (`sessionStorage` atau `localStorage` jika opsi *"Ingat sesi"* dicentang)
+
+---
+
+## 2. KONTRAK DATA TYPESCRIPT (`src/types/guest.ts`)
+
+```typescript
+/**
+ * Kode unik 4 Bidang/Unit Kerja di Disperkim Kota Samarinda
+ */
+export type DivisionId =
+  | 'SEKRETARIAT'
+  | 'PERUMAHAN'
+  | 'KAWASAN_PERMUKIMAN'
+  | 'PSU';
+
+/**
+ * Klasifikasi kategori pengunjung
+ */
+export type GuestCategory =
+  | 'UMUM'
+  | 'INSTANSI'
+  | 'PENGEMBANG'
+  | 'LAINNYA';
+
+/**
+ * Entitas utama catatan kunjungan tamu
+ */
+export interface GuestEntry {
+  id: string;                   // UUID v4 atau ID unik berbasis timestamp (misal: "guest_1748049300_01")
+  ticketNumber: string;         // Nomor tiket antrean/kunjungan (format: "TAMU-2026-XXX")
+  createdAt: string;            // ISO 8601 datetime string (misal: "2026-10-29T09:15:00.000Z")
+  fullName: string;             // Nama lengkap tamu sesuai KTP/ID
+  category: GuestCategory;      // Kategori tamu ('UMUM' | 'INSTANSI' | 'PENGEMBANG' | 'LAINNYA')
+  organizationOrAddress: string;// Nama Instansi/PT atau Alamat Domisili (RT/Kelurahan di Samarinda)
+  phoneNumber: string;          // Nomor HP / WhatsApp aktif
+  divisionId: DivisionId;       // Bidang tujuan di Disperkim
+  purpose: string;              // Detail maksud kunjungan & dokumen yang dibawa
+}
+
+/**
+ * Payload untuk membuat atau memperbarui data tamu
+ */
+export type GuestInputPayload = Omit<GuestEntry, 'id' | 'ticketNumber' | 'createdAt'> & {
+  createdAt?: string;
+};
+
+/**
+ * Parameter filter pada Dashboard Admin
+ */
+export interface GuestFilterParams {
+  searchQuery: string;
+  divisionId: DivisionId | 'ALL';
+  category: GuestCategory | 'ALL';
+  periodPreset: 'TODAY' | 'THIS_WEEK' | 'THIS_MONTH' | 'CUSTOM' | 'ALL';
+  selectedMonth?: string;       // Format "YYYY-MM"
+  startDate?: string;           // Format "YYYY-MM-DD"
+  endDate?: string;             // Format "YYYY-MM-DD"
+}
+```
+
+---
+
+## 3. METADATA REFERENSI BIDANG & KATEGORI
+
+Gunakan struktur referensi konstan berikut untuk merender Kartu Bidang, *Quick Chips*, dan petunjuk ruangan secara konsisten:
+
+```typescript
+export interface DivisionMetadata {
+  id: DivisionId;
+  name: string;
+  shortName: string;
+  subtitle: string;
+  floorBadge: string;
+  roomGuide: string;
+  description: string;
+  quickChipLabel: string;
+  badgeClass: string;
+}
+
+export const DIVISIONS_METADATA: Record<DivisionId, DivisionMetadata> = {
+  SEKRETARIAT: {
+    id: 'SEKRETARIAT',
+    name: 'Sekretariat',
+    shortName: 'Sekretariat',
+    subtitle: 'Umum & Kepegawaian',
+    floorBadge: 'Lantai 1 - Sayap Kiri',
+    roomGuide: 'Lantai 1 - Ruang Resepsionis & Tata Usaha Utama',
+    description:
+      'Administrasi persuratan dinas, disposisi pimpinan, arsip kepegawaian, verifikasi SPJ keuangan, logistik kantor, serta pengajuan PKL & Magang.',
+    quickChipLabel: 'Antar Surat Masuk / Magang / Audiensi',
+    badgeClass: 'bg-surface-container-high text-[#374774] border border-outline-variant/30',
+  },
+  PERUMAHAN: {
+    id: 'PERUMAHAN',
+    name: 'Bidang Perumahan',
+    shortName: 'Bidang Perumahan',
+    subtitle: 'Tata Kelola & Developer',
+    floorBadge: 'Lantai 2 - Ruang 204',
+    roomGuide: 'Lantai 2 - Ruang 204 (Ruang Kerja Bidang Perumahan Formal)',
+    description:
+      'Koordinasi dan serah terima fasilitas umum/sosial (PSU) dari developer, verifikasi site plan permukiman, dan regulasi pembangunan hunian formal.',
+    quickChipLabel: 'Penyerahan PSU Developer',
+    badgeClass: 'bg-[#374774] text-white',
+  },
+  KAWASAN_PERMUKIMAN: {
+    id: 'KAWASAN_PERMUKIMAN',
+    name: 'Bidang Kawasan Permukiman',
+    shortName: 'Bid. Kawasan Permukiman',
+    subtitle: 'RTLH & Penataan Kumuh',
+    floorBadge: 'Lantai 2 - Ruang 207',
+    roomGuide: 'Lantai 2 - Ruang 207 (Ruang Layanan Masyarakat & Validasi RTLH)',
+    description:
+      'Konsultasi & validasi program Bantuan Stimulan Rumah Swadaya (BSPS / RTLH), revitalisasi sanitasi tepian sungai Mahakam, dan kawasan kumuh terpadu.',
+    quickChipLabel: 'Bantuan RTLH / Bedah Rumah',
+    badgeClass: 'bg-[#4d5d8b] text-white',
+  },
+  PSU: {
+    id: 'PSU',
+    name: 'Bidang Prasarana, Sarana, dan Utilitas Umum (PSU)',
+    shortName: 'Bidang PSU',
+    subtitle: 'Lampu Jalan & Utilitas',
+    floorBadge: 'Lantai 1 - Sayap Kanan',
+    roomGuide: 'Lantai 1 - Sayap Kanan (Ruang Pengaduan & Teknisi Sarana Utilitas)',
+    description:
+      'Pelaporan perbaikan LPJU permukiman, pengajuan titik lampu jalan baru, drainase lingkungan gang, sarana bermain publik, dan pemeliharaan utilitas warga.',
+    quickChipLabel: 'Perbaikan / Pasang Lampu Jalan Permukiman',
+    badgeClass: 'bg-amber-100 text-amber-900 border border-[#EAB630]/40',
+  },
+};
+```
+
+### Pemetaan Label Kategori Tamu (`GuestCategory`):
+| Kode (`GuestCategory`) | Label Tombol Kiosk (`code.html`) | Label Input Dinamis (`organizationOrAddress`) | Contoh Placeholder |
+| :--- | :--- | :--- | :--- |
+| `UMUM` | Masyarakat Umum | `Alamat / RT / Kelurahan di Samarinda` | `Contoh: RT 14 Kelurahan Sungai Pinang Dalam` |
+| `INSTANSI` | Instansi / OPD | `Nama Instansi / OPD / Dinas` | `Contoh: Bapperida Kota Samarinda` |
+| `PENGEMBANG` | Pengembang / PT | `Nama Pengembang / PT / Asosiasi (REI/APERSI)` | `Contoh: PT. Mahakam Borneo Properti` |
+| `LAINNYA` | Akademisi / Lain | `Nama Institusi / Kampus / Lembaga` | `Contoh: Fakultas Teknik Universitas Mulawarman` |
+
+---
+
+## 4. KONTRAK SERVICE LAYER ASINKRON (`src/services/guestService.ts`)
+
+Wajib mengimplementasikan metode berikut menggunakan `Promise`:
+1. `getAllGuests(): Promise<GuestEntry[]>` — Membaca dari `localStorage` (`etamu_disperkim_guests_v1`). Jika belum ada data sama sekali (kunjungan pertama kali), otomatis menginisialisasi *Seed Data* dan menyimpannya.
+2. `createGuest(payload: GuestInputPayload): Promise<GuestEntry>` — Menambahkan tamu baru di urutan teratas, membuat `id`, `createdAt`, dan `ticketNumber` otomatis (`TAMU-2026-XXX`).
+3. `updateGuest(id: string, payload: Partial<GuestInputPayload>): Promise<GuestEntry>` — Memperbarui entri tamu berdasarkan `id`.
+4. `deleteGuest(id: string): Promise<void>` — Menghapus satu data tamu berdasarkan `id`.
+5. `resetToSampleData(): Promise<GuestEntry[]>` — Mengembalikan isi `localStorage` ke 18 data sampel realistis Kota Samarinda (mencakup contoh dari `code_2.html` seperti *Ir. H. Hendra Saputra - PT. Mahakam Borneo Properti*, *Siti Masitah - Warga RT 14 Karang Asam Ilir*, *Fajar Ramadan - UNMUL*, *Agus Setiawan - Ketua RT 08 Kel. Selili*, *Dewi Anggraini, S.STP - Bapperida*, *Bambang Irawan - PT. Sinar Lembuswana Mandiri*, dll).
+6. `exportGuestsToCSV(entries: GuestEntry[]): string` — Menghasilkan string CSV lengkap dengan awalan UTF-8 BOM (`\uFEFF`) agar langsung rapi saat dibuka di Microsoft Excel.

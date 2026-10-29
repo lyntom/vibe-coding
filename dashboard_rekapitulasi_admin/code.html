@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+
+<html lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "tertiary-fixed": "#b6ecef",
+        "on-primary": "#ffffff",
+        "on-tertiary-fixed": "#002021",
+        "primary-fixed-dim": "#b5c5fa",
+        "on-primary-fixed": "#051944",
+        "on-secondary-fixed": "#251a00",
+        "secondary-container": "#fef3c7",
+        "outline": "#757680",
+        "background": "#f9f9ff",
+        "secondary": "#785a00",
+        "on-error": "#ffffff",
+        "surface-container-high": "#dee8ff",
+        "primary-container": "#374774",
+        "tertiary": "#00383b",
+        "surface-tint": "#4d5d8b",
+        "surface-variant": "#d8e3fa",
+        "error-container": "#ffdad6",
+        "secondary-fixed": "#ffdf9c",
+        "on-tertiary": "#ffffff",
+        "tertiary-container": "#175053",
+        "inverse-on-surface": "#ebf1ff",
+        "outline-variant": "#c5c6d0",
+        "on-error-container": "#93000a",
+        "on-tertiary-fixed-variant": "#154e51",
+        "on-primary-container": "#e0e7ff",
+        "primary-fixed": "#dbe1ff",
+        "error": "#ba1a1a",
+        "surface-container-highest": "#d8e3fa",
+        "on-secondary-container": "#705300",
+        "on-surface": "#111c2c",
+        "primary": "#20305c",
+        "surface-container": "#e7eeff",
+        "on-secondary-fixed-variant": "#5b4300",
+        "inverse-primary": "#b5c5fa",
+        "surface-bright": "#f9f9ff",
+        "on-surface-variant": "#45464f",
+        "surface-dim": "#cfdaf1",
+        "secondary-fixed-dim": "#f4bf39",
+        "surface-container-lowest": "#ffffff",
+        "tertiary-fixed-dim": "#9bd0d3",
+        "inverse-surface": "#263142",
+        "on-primary-fixed-variant": "#354572",
+        "surface": "#f9f9ff",
+        "on-background": "#111c2c",
+        "surface-container-low": "#f0f3ff",
+        "on-tertiary-container": "#8cc1c4",
+        "on-secondary": "#ffffff",
+        "navyslate": "#374774",
+        "navyslate-hover": "#2b395d",
+        "gold-accent": "#EAB630",
+        "gold-light": "#fef9c3",
+        "gold-border": "#fde047"
+      },
+      "borderRadius": {
+        "DEFAULT": "0.125rem",
+        "lg": "0.25rem",
+        "xl": "0.5rem",
+        "full": "0.75rem"
+      },
+      "spacing": {
+        "space-sm": "0.5rem",
+        "gutter": "1.5rem",
+        "space-xl": "2.5rem",
+        "space-lg": "1.5rem",
+        "gutter-sm": "1rem",
+        "margin": "2rem",
+        "margin-sm": "1rem",
+        "space-xs": "0.25rem",
+        "space-md": "1rem"
+      },
+      "fontFamily": {
+        "headline-xl": ["Public Sans", "sans-serif"],
+        "headline-lg": ["Public Sans", "sans-serif"],
+        "headline-md": ["Public Sans", "sans-serif"],
+        "headline-sm": ["Public Sans", "sans-serif"],
+        "title-md": ["Public Sans", "sans-serif"],
+        "label-lg": ["Public Sans", "sans-serif"],
+        "label-md": ["Public Sans", "sans-serif"],
+        "label-sm": ["Public Sans", "sans-serif"],
+        "body-lg": ["Public Sans", "sans-serif"],
+        "body-md": ["Public Sans", "sans-serif"],
+        "body-sm": ["Public Sans", "sans-serif"]
+      },
+      "fontSize": {
+        "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+        "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.005em", "fontWeight": "600"}],
+        "headline-sm": ["20px", {"lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "600"}],
+        "title-md": ["18px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600"}],
+        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "600"}],
+        "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+        "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "400"}],
+        "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}],
+        "body-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "400"}]
+      }
+    }
+  }
+}</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest border-r border-outline-variant/30 z-50 flex flex-col pt-space-md pb-space-lg"><div class="px-space-lg pb-space-md border-b border-outline-variant/20 flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm text-navyslate uppercase font-bold tracking-wider">Administrasi Disperkim</span><span class="font-title-md text-title-md text-on-surface font-bold">Panel E-Tamu</span></div><nav class="flex-1 px-space-md pt-space-md flex flex-col gap-space-xs" data-active-classes="bg-navyslate text-on-primary font-bold rounded-lg relative overflow-hidden"><a aria-current="page" class="flex items-center px-space-md py-space-sm transition-colors bg-navyslate text-white font-bold rounded-lg relative shadow-sm group" data-path="admin-dashboard" href="#"><span class="absolute left-0 top-1.5 bottom-1.5 w-1 bg-gold-accent rounded-r"></span><span class="material-symbols-outlined mr-space-sm text-[20px] text-gold-accent">analytics</span>Dashboard</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-navyslate transition-colors" data-path="daftar-buku-tamu" href="#"><span class="material-symbols-outlined mr-space-sm text-[20px]">menu_book</span>Buku Tamu</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-navyslate transition-colors" data-path="verifikasi-kunjungan" href="#"><span class="material-symbols-outlined mr-space-sm text-[20px]">verified</span>Verifikasi</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-navyslate transition-colors" data-path="laporan-statistik" href="#"><span class="material-symbols-outlined mr-space-sm text-[20px]">bar_chart</span>Laporan &amp; Rekap</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-navyslate transition-colors" data-path="pengaturan-bidang" href="#"><span class="material-symbols-outlined mr-space-sm text-[20px]">apartment</span>Bidang &amp; Pejabat</a></nav><div class="px-space-md pt-space-sm border-t border-outline-variant/20"><a class="flex items-center px-space-md py-space-sm rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container hover:text-navyslate transition-colors" data-path="mode-kiosk" href="#"><span class="material-symbols-outlined mr-space-sm text-[20px]">desktop_windows</span>Mode Kiosk</a></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-20 bg-navyslate z-40 flex items-center justify-between px-space-md md:px-space-lg shadow-md gap-space-sm"><div class="flex items-center gap-space-sm md:gap-space-md min-w-0 flex-1 mr-2"><img alt="Logo Disperkim Kota Samarinda" class="h-8 w-auto object-contain flex-shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1U_7qZHwd5v0MhPpEcKg3H6TeM3uDOLRXp3lp2bynMXMD-KhwLwpaf2Wbb6pYG3djZvz4aeL9HpsiFxTA5a6Vc2m2VJh86aQvOp7kUzdhVGAmjZo9Qs14UT-PC6pTAvnxtJ8AxLtwGCxlOZHC3_QYbWJUVkmR30p4vl3bhC1OSKwgMWUbplzUhjMfT6NA_DW6O6c24c8b_ccKFNV4geBxcSDphIJRMS7BnMxBnvCV8"/><div class="flex flex-col min-w-0"><span class="text-[16px] md:text-title-md text-white font-bold truncate leading-tight">E-Tamu Disperkim Samarinda</span><span class="font-body-sm text-body-sm text-surface-variant hidden sm:inline truncate">Dinas Perumahan dan Kawasan Permukiman Kota Samarinda</span></div></div><div class="flex items-center gap-space-xs sm:gap-space-md flex-shrink-0"><div class="hidden md:flex items-center gap-space-xs bg-[#243153] px-space-md py-space-xs rounded-full border border-gold-accent/40 shadow-inner"><span class="material-symbols-outlined text-gold-accent text-[16px]">admin_panel_settings</span><span class="font-label-sm text-label-sm text-gold-accent font-bold whitespace-nowrap">PETUGAS PIKET</span></div><div class="w-8 h-8 rounded-full bg-[#20305c] border border-gold-accent/30 flex items-center justify-center flex-shrink-0 shadow-sm"><span class="material-symbols-outlined text-white text-[18px]">person</span></div></div><div class="absolute bottom-0 left-0 right-0 h-[3px] bg-gold-accent"></div></header><main class="relative pt-20 bg-background min-h-screen px-gutter py-space-lg"><div class="flex flex-col w-full">
+<!-- Operational Sub-Header & Live Status Banner -->
+<div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md mb-space-lg">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-sm mb-space-xs">
+<span class="font-headline-lg text-headline-lg text-on-surface">Rekapitulasi Buku Tamu</span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container-high text-navyslate font-label-sm text-label-sm border border-outline-variant/30">
+<span class="w-2 h-2 rounded-full bg-navyslate animate-pulse"></span>
+          Sistem Aktif • Mode Lokal (MVP)
+        </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+        Pusat kendali registrasi kunjungan tatap muka Dinas Perumahan dan Kawasan Permukiman Kota Samarinda
+      </p>
+</div>
+<!-- Toolbar Action Buttons -->
+<div class="flex flex-wrap items-center gap-space-sm w-full md:w-auto">
+<button class="flex items-center gap-1.5 px-space-md py-2.5 rounded-lg bg-navyslate text-white hover:bg-navyslate-hover transition shadow-sm font-label-md text-label-md" onclick="openModal('modalInputTamu')">
+<span class="material-symbols-outlined text-[18px] text-gold-accent">person_add</span>
+        + Input Tamu Manual
+      </button>
+<button class="flex items-center gap-1.5 px-space-md py-2.5 rounded-lg bg-surface-container-lowest border border-outline-variant/40 text-navyslate hover:bg-surface-container transition shadow-sm font-label-md text-label-md" onclick="downloadCSV()">
+<span class="material-symbols-outlined text-[18px] text-navyslate">file_download</span>
+        Unduh CSV
+      </button>
+<button class="flex items-center gap-1.5 px-space-md py-2.5 rounded-lg bg-surface-container-lowest border border-outline-variant/40 text-on-surface hover:bg-surface-container transition shadow-sm font-label-md text-label-md" onclick="openModal('modalCetakKop')">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">print</span>
+        Cetak Rekap PDF
+      </button>
+<button class="relative flex items-center gap-1.5 px-space-md py-2.5 rounded-lg bg-surface-container-low border border-outline-variant/30 text-navyslate hover:bg-surface-container shadow-sm font-label-md text-label-md group" onclick="generateSampleData()">
+<span class="material-symbols-outlined text-[18px] group-hover:rotate-180 transition-transform text-gold-accent">autorenew</span>
+<span class="">Muat Sampel Data</span>
+<span class="px-1.5 py-0.2 rounded-full bg-amber-100 text-amber-900 border border-gold-accent/40 font-label-sm text-label-sm font-semibold">18 Baru</span>
+</button>
+</div>
+</div>
+<!-- 4-Card Summary Metrics Bento -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md mb-space-lg">
+<!-- Metric 1 -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container-lowest p-space-md shadow-sm border border-outline-variant/20 flex flex-col justify-between">
+<div class="absolute top-0 left-0 right-0 h-1 bg-navyslate"></div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Total Tamu Terfilter</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-navyslate">
+<span class="material-symbols-outlined text-[20px]">group</span>
+</div>
+</div>
+<div>
+<div class="font-headline-xl text-headline-xl text-on-surface leading-none mb-1" id="metricTotal">148</div>
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm text-navyslate font-semibold">
+<span class="material-symbols-outlined text-[16px] text-gold-accent">trending_up</span>
+<span class="">+14% dari bulan lalu</span>
+</div>
+</div>
+</div>
+<!-- Metric 2 -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container-lowest p-space-md shadow-sm border border-outline-variant/20 flex flex-col justify-between">
+<div class="absolute top-0 left-0 right-0 h-1 bg-gold-accent"></div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Kunjungan Hari Ini</span>
+<div class="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center text-amber-700">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+</div>
+</div>
+<div>
+<div class="font-headline-xl text-headline-xl text-on-surface leading-none mb-1">18</div>
+<div class="flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-gold-accent animate-ping"></span>
+<span class="">4 tamu sedang dalam lobi</span>
+</div>
+</div>
+</div>
+<!-- Metric 3 -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container-lowest p-space-md shadow-sm border border-outline-variant/20 flex flex-col justify-between">
+<div class="absolute top-0 left-0 right-0 h-1 bg-navyslate"></div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Bulan Berjalan (Mei 2026)</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-navyslate">
+<span class="material-symbols-outlined text-[20px]">date_range</span>
+</div>
+</div>
+<div>
+<div class="font-headline-xl text-headline-xl text-on-surface leading-none mb-1">148</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">
+          Rata-rata 7.4 tamu/hari kerja
+        </div>
+</div>
+</div>
+<!-- Metric 4 -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container-lowest p-space-md shadow-sm border border-outline-variant/20 flex flex-col justify-between">
+<div class="absolute top-0 left-0 right-0 h-1 bg-gold-accent"></div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Bidang Terbanyak</span>
+<div class="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center text-amber-800">
+<span class="material-symbols-outlined text-[20px]">home_work</span>
+</div>
+</div>
+<div>
+<div class="font-headline-md text-headline-md text-navyslate leading-snug font-bold">Perumahan <span class="text-gold-accent">(39%)</span></div>
+<div class="font-label-sm text-label-sm text-on-surface-variant truncate">
+          Dominasi: PSU Dev &amp; Bedah Rumah
+        </div>
+</div>
+</div>
+</div>
+<!-- Split Panel: Visual Division Breakdown + Samarinda Civic Insights -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-md mb-space-lg">
+<!-- Division Statistics Progress Bars (2 cols) -->
+<div class="lg:col-span-2 rounded-xl bg-surface-container-lowest p-space-lg shadow-sm border border-outline-variant/20 flex flex-col justify-between">
+<div class="flex items-center justify-between pb-space-sm mb-space-md border-b border-surface-container">
+<div>
+<span class="font-title-lg text-title-lg text-navyslate font-bold block">Distribusi Berdasarkan Bidang</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Akumulasi kunjungan berdasarkan 4 pilar unit kerja</span>
+</div>
+<span class="font-label-sm text-label-sm text-navyslate bg-surface-container px-2.5 py-1 rounded font-semibold border border-outline-variant/30">148 Total</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Perumahan (Dominant - Gold Accent) -->
+<div class="p-space-sm rounded-lg bg-amber-50/70 border border-gold-accent/40">
+<div class="flex justify-between items-center mb-1.5">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Bidang Perumahan</span>
+<span class="font-label-sm text-label-sm font-bold text-amber-900 bg-gold-accent/30 px-1.5 py-0.5 rounded">58 Tamu (39%)</span>
+</div>
+<div class="w-full bg-amber-100 h-2 rounded-full overflow-hidden">
+<div class="bg-gold-accent h-full rounded-full" style="width: 39%"></div>
+</div>
+<p class="font-body-sm text-[11px] text-on-surface-variant mt-1.5">Konsultasi RTLH, verifikasi teknis fisik perumahan</p>
+</div>
+<!-- Kawasan Permukiman -->
+<div class="p-space-sm rounded-lg bg-surface-container-low border border-outline-variant/20">
+<div class="flex justify-between items-center mb-1.5">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Bidang Kawasan Permukiman</span>
+<span class="font-label-sm text-label-sm font-bold text-navyslate">38 Tamu (26%)</span>
+</div>
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-navyslate h-full rounded-full" style="width: 26%"></div>
+</div>
+<p class="font-body-sm text-[11px] text-on-surface-variant mt-1.5">Penanganan kawasan kumuh, drainase lingkungan</p>
+</div>
+<!-- Sekretariat -->
+<div class="p-space-sm rounded-lg bg-surface-container-low border border-outline-variant/20">
+<div class="flex justify-between items-center mb-1.5">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Sekretariat</span>
+<span class="font-label-sm text-label-sm font-bold text-navyslate/80">32 Tamu (22%)</span>
+</div>
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-[#4d5d8b] h-full rounded-full" style="width: 22%"></div>
+</div>
+<p class="font-body-sm text-[11px] text-on-surface-variant mt-1.5">Surat masuk dinas, audiensi pimpinan, magang/PKL</p>
+</div>
+<!-- PSU -->
+<div class="p-space-sm rounded-lg bg-surface-container-low border border-outline-variant/20">
+<div class="flex justify-between items-center mb-1.5">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Prasarana, Sarana &amp; Utilitas (PSU)</span>
+<span class="font-label-sm text-label-sm font-bold text-amber-800">20 Tamu (13%)</span>
+</div>
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-gold-accent/80 h-full rounded-full" style="width: 13%"></div>
+</div>
+<p class="font-body-sm text-[11px] text-on-surface-variant mt-1.5">Berita acara serah terima fasilitas umum developer</p>
+</div>
+</div>
+</div>
+<!-- Visual Civic Pulse / Quick Operational Insights -->
+<div class="rounded-xl bg-surface-container-lowest p-space-lg shadow-sm border border-outline-variant/20 flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-2 text-navyslate">
+<span class="material-symbols-outlined text-[20px] text-gold-accent">insights</span>
+<span class="font-label-lg text-label-lg uppercase tracking-wide font-bold">Puncak Lalu Lintas</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface mb-space-sm">
+          Hari <strong>Selasa &amp; Kamis (09.00 - 11.30 WITA)</strong> mencatat 63% total volume tamu mingguan di loket piket.
+        </p>
+<!-- Samarinda Office Hours Card -->
+<div class="rounded-lg bg-surface-container-low p-space-sm flex flex-col gap-1.5 mb-space-sm border border-outline-variant/20">
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Jam Layanan Front Office:</span>
+<span class="text-navyslate font-bold">08.00 - 15.30 WITA</span>
+</div>
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Lokasi Piket:</span>
+<span class="text-on-surface">Gedung Disperkim Lt. 1</span>
+</div>
+</div>
+</div>
+<div class="p-space-sm rounded-lg bg-amber-50/80 border border-gold-accent/30 flex items-start gap-2">
+<span class="material-symbols-outlined text-gold-accent text-[20px] mt-0.5">verified_user</span>
+<span class="font-body-sm text-[13px] text-on-surface leading-snug">Semua tamu diwajibkan melakukan identifikasi KTP/SIM pada resepsionis piket sebelum diarahkan ke lantai ruang bidang.</span>
+</div>
+</div>
+</div>
+<!-- Filter, Search & Group Controls Section -->
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm mb-space-md flex flex-col gap-space-sm border border-outline-variant/20">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-sm">
+<!-- Search Input -->
+<div class="md:col-span-5 relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low text-on-surface font-body-sm text-body-sm rounded-lg outline-none focus:ring-2 focus:ring-navyslate/40 placeholder:text-on-surface-variant/70 border border-outline-variant/20" id="searchInput" oninput="handleSearch(this.value)" placeholder="Cari nama tamu, instansi, alamat RT, kontak, atau keperluan..." type="text"/>
+</div>
+<!-- Bidang Filter -->
+<div class="md:col-span-3">
+<select class="w-full px-3 py-2 bg-surface-container-low text-on-surface font-body-sm text-body-sm rounded-lg outline-none focus:ring-2 focus:ring-navyslate/40 border border-outline-variant/20" id="filterBidang" onchange="filterData()">
+<option value="">Semua Bidang Tujuan</option>
+<option value="Sekretariat">Sekretariat</option>
+<option value="Bidang Perumahan">Bidang Perumahan</option>
+<option value="Bidang Kawasan Permukiman">Bidang Kawasan Permukiman</option>
+<option value="Bidang PSU">Bidang PSU</option>
+</select>
+</div>
+<!-- Kategori Filter -->
+<div class="md:col-span-2">
+<select class="w-full px-3 py-2 bg-surface-container-low text-on-surface font-body-sm text-body-sm rounded-lg outline-none focus:ring-2 focus:ring-navyslate/40 border border-outline-variant/20" id="filterKategori" onchange="filterData()">
+<option value="">Semua Kategori</option>
+<option value="Umum">Masyarakat Umum</option>
+<option value="Instansi">Instansi / Lembaga</option>
+<option value="Pengembang">Pengembang / PT</option>
+<option value="Mahasiswa">Mahasiswa / Riset</option>
+</select>
+</div>
+<!-- Periode Dropdown -->
+<div class="md:col-span-2">
+<select class="w-full px-3 py-2 bg-surface-container-low text-on-surface font-body-sm text-body-sm rounded-lg outline-none focus:ring-2 focus:ring-navyslate/40 border border-outline-variant/20" id="filterPeriode" onchange="filterData()">
+<option value="bulan-ini">Mei 2026 (Bulan Ini)</option>
+<option value="hari-ini">Hari Ini</option>
+<option value="minggu-ini">7 Hari Terakhir</option>
+<option value="semua">Semua Arsip</option>
+</select>
+</div>
+</div>
+<!-- Quick Pill Badges for Fast Filtering -->
+<div class="flex items-center gap-space-xs flex-wrap pt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant mr-1">Filter Kilat:</span>
+<button class="px-2.5 py-1 rounded bg-surface-container text-on-surface hover:bg-surface-container-high font-label-sm text-label-sm border border-outline-variant/30" onclick="setFastFilter('semua')">Semua</button>
+<button class="px-2.5 py-1 rounded bg-amber-50 text-amber-900 border border-gold-accent/40 hover:bg-amber-100 font-label-sm text-label-sm font-semibold" onclick="setFastFilter('perumahan')">Urusan PSU &amp; RTLH</button>
+<button class="px-2.5 py-1 rounded bg-surface-container-low text-navyslate hover:bg-surface-container font-label-sm text-label-sm border border-outline-variant/30" onclick="setFastFilter('developer')">Pengembang Swasta</button>
+<button class="px-2.5 py-1 rounded bg-surface-container-low text-on-surface hover:bg-surface-container font-label-sm text-label-sm border border-outline-variant/30" onclick="setFastFilter('hari-ini')">Kedatangan Hari Ini</button>
+</div>
+</div>
+<!-- Guest Visitor Data Table -->
+<div class="rounded-xl bg-surface-container-lowest shadow-sm overflow-hidden flex flex-col border border-outline-variant/20">
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left" id="tamuTable">
+<thead class="bg-surface-container-low border-b border-outline-variant/20">
+<tr>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider w-12 text-center">No</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Waktu Kunjungan</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Nama Tamu &amp; Kontak</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Kategori &amp; Instansi/Domisili</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Bidang Tujuan</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Keperluan Kunjungan</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider text-right">Aksi</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-low font-body-sm text-body-sm text-on-surface" id="tableBody">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors" data-bidang="Bidang PSU" data-kategori="Pengembang">
+<td class="py-3.5 px-4 text-center text-on-surface-variant font-label-md">1</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="font-label-md text-label-md block font-semibold">24 Mei 2026</span>
+<span class="font-body-sm text-on-surface-variant">09:15 WITA</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="font-title-md text-title-md block text-on-surface font-semibold">Ir. H. Hendra Saputra</span>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-[12px] mt-0.5">
+<span class="material-symbols-outlined text-[14px] text-navyslate">call</span>
+<span class="">0812-5432-8891</span>
+<span class="px-1.5 bg-amber-100 text-amber-900 border border-gold-accent/40 rounded text-[10px] font-bold">WA</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-amber-50 text-amber-900 border border-gold-accent/40 mb-1">
+                Pengembang
+              </span>
+<span class="block text-on-surface font-medium">PT. Mahakam Borneo Properti</span>
+<span class="block text-on-surface-variant text-[12px]">Komp. Ruko Vorvo, Samarinda</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full font-label-sm text-label-sm bg-amber-100 text-amber-900 font-semibold border border-gold-accent/40">
+                Bidang PSU
+              </span>
+</td>
+<td class="py-3.5 px-4 max-w-xs">
+<p class="line-clamp-2 text-on-surface" title="Penyerahan berkas fisik Berita Acara Serah Terima (BAST) Prasarana, Sarana, dan Utilitas Perumahan Pesona Mahakam Tahap III kepada Disperkim.">
+                Penyerahan berkas fisik BAST Prasarana &amp; Sarana Utilitas Perumahan Pesona Mahakam Tahap III.
+              </p>
+</td>
+<td class="py-3.5 px-4 text-right whitespace-nowrap">
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-navyslate transition" onclick="viewDetail(1)" title="Lihat Rincian">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-error transition" onclick="deleteRow(this)" title="Hapus">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors" data-bidang="Bidang Perumahan" data-kategori="Umum">
+<td class="py-3.5 px-4 text-center text-on-surface-variant font-label-md">2</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="font-label-md text-label-md block font-semibold">24 Mei 2026</span>
+<span class="font-body-sm text-on-surface-variant">09:40 WITA</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="font-title-md text-title-md block text-on-surface font-semibold">Siti Masitah</span>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-[12px] mt-0.5">
+<span class="material-symbols-outlined text-[14px] text-navyslate">call</span>
+<span class="">0821-9988-1120</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-surface-container text-navyslate mb-1 border border-outline-variant/30">
+                Umum / Warga
+              </span>
+<span class="block text-on-surface font-medium">Warga Kelurahan Karang Asam Ilir</span>
+<span class="block text-on-surface-variant text-[12px]">RT. 14, Kec. Sungai Kunjang</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full font-label-sm text-label-sm bg-navyslate text-white font-semibold">
+                Bidang Perumahan
+              </span>
+</td>
+<td class="py-3.5 px-4 max-w-xs">
+<p class="line-clamp-2 text-on-surface" title="Konsultasi persyaratan bantuan stimulan Rumah Tidak Layak Huni (BSPS/RTLH) APBD 2026 untuk lingkungan rawan banjir.">
+                Konsultasi berkas pengusulan perbaikan Rumah Tidak Layak Huni (RTLH/Bedah Rumah) APBD 2026.
+              </p>
+</td>
+<td class="py-3.5 px-4 text-right whitespace-nowrap">
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-navyslate transition" onclick="viewDetail(2)">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-error transition" onclick="deleteRow(this)">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors" data-bidang="Sekretariat" data-kategori="Mahasiswa">
+<td class="py-3.5 px-4 text-center text-on-surface-variant font-label-md">3</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="font-label-md text-label-md block font-semibold">24 Mei 2026</span>
+<span class="font-body-sm text-on-surface-variant">10:10 WITA</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="font-title-md text-title-md block text-on-surface font-semibold">Fajar Ramadan</span>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-[12px] mt-0.5">
+<span class="material-symbols-outlined text-[14px] text-navyslate">call</span>
+<span class="">0852-4411-9090</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-amber-50 text-amber-900 border border-gold-accent/40 mb-1">
+                Mahasiswa / Riset
+              </span>
+<span class="block text-on-surface font-medium">Universitas Mulawarman (UNMUL)</span>
+<span class="block text-on-surface-variant text-[12px]">Fakultas Teknik Sipil &amp; Perencanaan</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full font-label-sm text-label-sm bg-surface-container-high text-navyslate font-semibold border border-outline-variant/30">
+                Sekretariat
+              </span>
+</td>
+<td class="py-3.5 px-4 max-w-xs">
+<p class="line-clamp-2 text-on-surface">
+                Penyerahan Surat Pengantar Magang / Praktek Kerja Lapangan (PKL) periode Juni-Agustus 2026 bagian Subbag Kepegawaian.
+              </p>
+</td>
+<td class="py-3.5 px-4 text-right whitespace-nowrap">
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-navyslate transition" onclick="viewDetail(3)">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-error transition" onclick="deleteRow(this)">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors" data-bidang="Bidang Kawasan Permukiman" data-kategori="Umum">
+<td class="py-3.5 px-4 text-center text-on-surface-variant font-label-md">4</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="font-label-md text-label-md block font-semibold">23 Mei 2026</span>
+<span class="font-body-sm text-on-surface-variant">11:05 WITA</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="font-title-md text-title-md block text-on-surface font-semibold">Agus Setiawan (Ketua RT 08)</span>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-[12px] mt-0.5">
+<span class="material-symbols-outlined text-[14px] text-navyslate">call</span>
+<span class="">0813-7766-3211</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-surface-container text-navyslate mb-1 border border-outline-variant/30">
+                Umum / RT
+              </span>
+<span class="block text-on-surface font-medium">Kelurahan Selili</span>
+<span class="block text-on-surface-variant text-[12px]">Kecamatan Samarinda Kota</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full font-label-sm text-label-sm bg-[#4d5d8b] text-white font-semibold">
+                Bidang Kawasan Permukiman
+              </span>
+</td>
+<td class="py-3.5 px-4 max-w-xs">
+<p class="line-clamp-2 text-on-surface">
+                Pelaporan perbaikan semenisasi jalan lingkungan permukiman dan lampu penerangan jalan umum (LPJU) yang padam di bantaran sungai.
+              </p>
+</td>
+<td class="py-3.5 px-4 text-right whitespace-nowrap">
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-navyslate transition" onclick="viewDetail(4)">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-error transition" onclick="deleteRow(this)">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors" data-bidang="Sekretariat" data-kategori="Instansi">
+<td class="py-3.5 px-4 text-center text-on-surface-variant font-label-md">5</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="font-label-md text-label-md block font-semibold">23 Mei 2026</span>
+<span class="font-body-sm text-on-surface-variant">14:20 WITA</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="font-title-md text-title-md block text-on-surface font-semibold">Dewi Anggraini, S.STP</span>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-[12px] mt-0.5">
+<span class="material-symbols-outlined text-[14px] text-navyslate">call</span>
+<span class="">0811-5544-332</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-surface-container-high text-navyslate font-bold border border-outline-variant/30 mb-1">
+                Instansi Pemkot
+              </span>
+<span class="block text-on-surface font-medium">Bapperida Kota Samarinda</span>
+<span class="block text-on-surface-variant text-[12px]">Bidang Infrastruktur &amp; Kewilayahan</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full font-label-sm text-label-sm bg-surface-container-high text-navyslate font-semibold border border-outline-variant/30">
+                Sekretariat
+              </span>
+</td>
+<td class="py-3.5 px-4 max-w-xs">
+<p class="line-clamp-2 text-on-surface">
+                Koordinasi sinkronisasi data program penataan kawasan kumuh terpadu untuk Musrenbang RKPD TA 2027.
+              </p>
+</td>
+<td class="py-3.5 px-4 text-right whitespace-nowrap">
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-navyslate transition" onclick="viewDetail(5)">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-error transition" onclick="deleteRow(this)">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors" data-bidang="Bidang PSU" data-kategori="Pengembang">
+<td class="py-3.5 px-4 text-center text-on-surface-variant font-label-md">6</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="font-label-md text-label-md block font-semibold">22 Mei 2026</span>
+<span class="font-body-sm text-on-surface-variant">08:45 WITA</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="font-title-md text-title-md block text-on-surface font-semibold">Bambang Irawan</span>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-[12px] mt-0.5">
+<span class="material-symbols-outlined text-[14px] text-navyslate">call</span>
+<span class="">0813-8822-4455</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-amber-50 text-amber-900 border border-gold-accent/40 mb-1">
+                Pengembang
+              </span>
+<span class="block text-on-surface font-medium">PT. Sinar Lembuswana Mandiri</span>
+<span class="block text-on-surface-variant text-[12px]">Jl. M. Yamin, Samarinda Ulu</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full font-label-sm text-label-sm bg-amber-100 text-amber-900 font-semibold border border-gold-accent/40">
+                Bidang PSU
+              </span>
+</td>
+<td class="py-3.5 px-4 max-w-xs">
+<p class="line-clamp-2 text-on-surface">
+                Permohonan jadwal tinjauan lapangan tim verifikasi PSU untuk perumahan Lembuswana Hills Blok D &amp; E.
+              </p>
+</td>
+<td class="py-3.5 px-4 text-right whitespace-nowrap">
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-navyslate transition" onclick="viewDetail(6)">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-error transition" onclick="deleteRow(this)">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination Footer -->
+<div class="p-space-md bg-surface-container-low flex flex-col sm:flex-row items-center justify-between gap-space-sm border-t border-outline-variant/20">
+<div class="font-body-sm text-body-sm text-on-surface-variant">
+        Menampilkan <span class="font-semibold text-on-surface">1 - 6</span> dari <span class="font-semibold text-on-surface" id="totalTableCount">148</span> entri tamu
+      </div>
+<div class="flex items-center gap-1">
+<button class="px-3 py-1.5 rounded bg-surface-container text-on-surface hover:bg-surface-container-high font-label-sm text-label-sm disabled:opacity-40 border border-outline-variant/30" disabled="">
+          « Sebelumnya
+        </button>
+<button class="px-3 py-1.5 rounded bg-navyslate text-white font-label-sm text-label-sm font-bold shadow-sm">1</button>
+<button class="px-3 py-1.5 rounded bg-surface-container text-on-surface hover:bg-surface-container-high font-label-sm text-label-sm border border-outline-variant/30">2</button>
+<button class="px-3 py-1.5 rounded bg-surface-container text-on-surface hover:bg-surface-container-high font-label-sm text-label-sm border border-outline-variant/30">3</button>
+<span class="px-2 text-on-surface-variant">...</span>
+<button class="px-3 py-1.5 rounded bg-surface-container text-on-surface hover:bg-surface-container-high font-label-sm text-label-sm border border-outline-variant/30">15</button>
+<button class="px-3 py-1.5 rounded bg-surface-container text-on-surface hover:bg-surface-container-high font-label-sm text-label-sm border border-outline-variant/30">
+          Berikutnya »
+        </button>
+</div>
+</div>
+</div>
+<!-- MODAL 1: Input Tamu Manual (Receptionist desk modal) -->
+<div class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4 overflow-y-auto" id="modalInputTamu">
+<div class="bg-surface-container-lowest rounded-xl max-w-xl w-full p-space-lg shadow-xl relative animate-in fade-in zoom-in-95 duration-150 my-8 border border-outline-variant/30">
+<div class="flex items-center justify-between pb-space-sm mb-space-md border-b border-surface-container">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-navyslate">person_add</span>
+<span class="font-title-lg text-title-lg text-navyslate font-bold">Input Tamu Manual (Resepsionis)</span>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface" onclick="closeModal('modalInputTamu')">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<form class="flex flex-col gap-space-md" id="formInputTamu" onsubmit="handleManualSubmit(event)">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1">Nama Lengkap Tamu *</label>
+<input class="w-full px-3 py-2 rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm outline-none focus:ring-2 focus:ring-navyslate/40 border border-outline-variant/20" placeholder="Contoh: Ahmad Fadillah" required="" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1">Nomor WhatsApp / Telp *</label>
+<input class="w-full px-3 py-2 rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm outline-none focus:ring-2 focus:ring-navyslate/40 border border-outline-variant/20" placeholder="08xx-xxxx-xxxx" required="" type="tel"/>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1">Kategori Tamu</label>
+<select class="w-full px-3 py-2 rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm outline-none focus:ring-2 focus:ring-navyslate/40 border border-outline-variant/20">
+<option value="Umum">Masyarakat Umum / Warga</option>
+<option value="Pengembang">Pengembang / Developer</option>
+<option value="Instansi">Instansi Pemerintah / BUMN</option>
+<option value="Mahasiswa">Mahasiswa / Peneliti</option>
+</select>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1">Bidang Tujuan *</label>
+<select class="w-full px-3 py-2 rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm outline-none focus:ring-2 focus:ring-navyslate/40 border border-outline-variant/20" required="">
+<option value="Bidang Perumahan">Bidang Perumahan</option>
+<option value="Bidang Kawasan Permukiman">Bidang Kawasan Permukiman</option>
+<option value="Bidang PSU">Bidang Prasarana, Sarana &amp; Utilitas (PSU)</option>
+<option value="Sekretariat">Sekretariat / Subbag Umum</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1">Instansi / Asal Alamat (Kelurahan &amp; RT)</label>
+<input class="w-full px-3 py-2 rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm outline-none focus:ring-2 focus:ring-navyslate/40 border border-outline-variant/20" placeholder="Contoh: PT. Borneo Jaya atau Kel. Loa Bakung RT 04" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1">Keperluan / Keterangan Kunjungan *</label>
+<textarea class="w-full px-3 py-2 rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm outline-none focus:ring-2 focus:ring-navyslate/40 border border-outline-variant/20" placeholder="Tuliskan tujuan konsultasi atau penyerahan berkas secara ringkas..." required="" rows="3"></textarea>
+</div>
+<div class="flex items-center justify-end gap-space-sm pt-space-sm border-t border-surface-container">
+<button class="px-4 py-2 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition" onclick="closeModal('modalInputTamu')" type="button">
+            Batal
+          </button>
+<button class="px-5 py-2 rounded-lg bg-navyslate text-white font-label-md text-label-md hover:bg-navyslate-hover transition shadow-sm" type="submit">
+            Simpan Tamu
+          </button>
+</div>
+</form>
+</div>
+</div>
+<!-- MODAL 2: Cetak Preview Resmi Kop Surat Disperkim Samarinda -->
+<div class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4 overflow-y-auto" id="modalCetakKop">
+<div class="bg-surface-container-lowest rounded-xl max-w-4xl w-full p-8 shadow-2xl relative my-8 text-on-surface border border-outline-variant/30">
+<div class="flex items-center justify-between pb-4 mb-4 border-b border-surface-container">
+<span class="font-title-lg text-title-lg text-navyslate font-bold">Pratinjau Cetak Lembar Rekapitulasi Resmi</span>
+<div class="flex items-center gap-2">
+<button class="px-4 py-1.5 rounded-lg bg-navyslate text-white font-label-md text-label-md hover:bg-navyslate-hover transition flex items-center gap-1.5 shadow-sm" onclick="window.print()">
+<span class="material-symbols-outlined text-[18px] text-gold-accent">print</span>
+            Cetak Sekarang
+          </button>
+<button class="p-1 rounded-lg text-on-surface-variant hover:text-on-surface" onclick="closeModal('modalCetakKop')">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+</div>
+<!-- Formal Kop Surat -->
+<div class="p-6 bg-white rounded border border-surface-container shadow-inner">
+<div class="flex items-center justify-center gap-6 pb-4 border-b-[3px] border-black text-center relative mb-6">
+<img alt="Logo Samarinda" class="h-20 w-auto object-contain absolute left-4 top-1" src="https://lh3.googleusercontent.com/aida/AEtjO1U_7qZHwd5v0MhPpEcKg3H6TeM3uDOLRXp3lp2bynMXMD-KhwLwpaf2Wbb6pYG3djZvz4aeL9HpsiFxTA5a6Vc2m2VJh86aQvOp7kUzdhVGAmjZo9Qs14UT-PC6pTAvnxtJ8AxLtwGCxlOZHC3_QYbWJUVkmR30p4vl3bhC1OSKwgMWUbplzUhjMfT6NA_DW6O6c24c8b_ccKFNV4geBxcSDphIJRMS7BnMxBnvCV8"/>
+<div class="flex flex-col items-center">
+<span class="font-title-lg text-lg uppercase tracking-wide font-bold">Pemerintah Kota Samarinda</span>
+<span class="font-headline-md text-xl uppercase tracking-wider font-extrabold text-navyslate">Dinas Perumahan dan Kawasan Permukiman</span>
+<span class="font-body-sm text-xs text-on-surface-variant max-w-lg mt-0.5">
+              Jalan Kusuma Bangsa No. 01, Samarinda, Kalimantan Timur 75121 • Telp (0541) 743210 • Posel: disperkim@samarindakota.go.id
+            </span>
+</div>
+</div>
+<div class="text-center mb-6">
+<h2 class="font-title-lg text-base uppercase font-bold tracking-wider underline">Laporan Rekapitulasi Kunjungan Tamu</h2>
+<span class="font-body-sm text-xs text-on-surface-variant">Periode: 01 Mei 2026 s/d 24 Mei 2026 • Dicetak: 24 Mei 2026 15:45 WITA</span>
+</div>
+<table class="w-full text-left text-xs border border-collapse border-black mb-8">
+<thead>
+<tr class="bg-gray-100 border-b border-black">
+<th class="border border-black p-2 text-center w-8">No</th>
+<th class="border border-black p-2">Tgl / Jam</th>
+<th class="border border-black p-2">Nama Tamu &amp; Asal Instansi</th>
+<th class="border border-black p-2">Bidang Tujuan</th>
+<th class="border border-black p-2">Keperluan Kunjungan</th>
+<th class="border border-black p-2 text-center w-24">Paraf Tamu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="border border-black p-2 text-center">1</td>
+<td class="border border-black p-2 whitespace-nowrap">24/05/2026 09:15</td>
+<td class="border border-black p-2"><strong>Ir. H. Hendra Saputra</strong><br/><span class="text-gray-600">PT. Mahakam Borneo Properti</span></td>
+<td class="border border-black p-2">Bidang PSU</td>
+<td class="border border-black p-2">Penyerahan BAST Prasarana Perumahan Pesona Mahakam III</td>
+<td class="border border-black p-2 text-center text-gray-400 italic">[Terverifikasi]</td>
+</tr>
+<tr>
+<td class="border border-black p-2 text-center">2</td>
+<td class="border border-black p-2 whitespace-nowrap">24/05/2026 09:40</td>
+<td class="border border-black p-2"><strong>Siti Masitah</strong><br/><span class="text-gray-600">Warga RT 14 Karang Asam Ilir</span></td>
+<td class="border border-black p-2">Bidang Perumahan</td>
+<td class="border border-black p-2">Konsultasi Bedah Rumah Tidak Layak Huni (RTLH)</td>
+<td class="border border-black p-2 text-center text-gray-400 italic">[Terverifikasi]</td>
+</tr>
+<tr>
+<td class="border border-black p-2 text-center">3</td>
+<td class="border border-black p-2 whitespace-nowrap">24/05/2026 10:10</td>
+<td class="border border-black p-2"><strong>Fajar Ramadan</strong><br/><span class="text-gray-600">Fakultas Teknik Unmul</span></td>
+<td class="border border-black p-2">Sekretariat</td>
+<td class="border border-black p-2">Pengantaran berkas permohonan magang riset perkotaan</td>
+<td class="border border-black p-2 text-center text-gray-400 italic">[Terverifikasi]</td>
+</tr>
+</tbody>
+</table>
+<!-- Signature Section -->
+<div class="flex justify-end mt-12 pr-6">
+<div class="flex flex-col items-center text-center font-body-sm text-xs">
+<span class="">Samarinda, 24 Mei 2026</span>
+<span class="mb-14">Petugas Meja Piket / Penerima Tamu,</span>
+<span class="font-bold underline">MUHAMMAD IHSAN, S.Sos</span>
+<span class="">NIP. 19850412 201001 1 008</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  function openModal(id) {
+    const modal = document.getElementById(id);
+    if (modal) modal.classList.remove('hidden');
+  }
+
+  function closeModal(id) {
+    const modal = document.getElementById(id);
+    if (modal) modal.classList.add('hidden');
+  }
+
+  function handleSearch(val) {
+    const query = val.toLowerCase();
+    const rows = document.querySelectorAll('#tableBody tr');
+    let visibleCount = 0;
+
+    rows.forEach(row => {
+      const text = row.innerText.toLowerCase();
+      if (text.includes(query)) {
+        row.style.display = '';
+        visibleCount++;
+      } else {
+        row.style.display = 'none';
+      }
+    });
+
+    const counter = document.getElementById('totalTableCount');
+    if (counter) counter.innerText = visibleCount;
+  }
+
+  function filterData() {
+    const bVal = document.getElementById('filterBidang').value;
+    const kVal = document.getElementById('filterKategori').value;
+    const rows = document.querySelectorAll('#tableBody tr');
+    let visibleCount = 0;
+
+    rows.forEach(row => {
+      const rBidang = row.getAttribute('data-bidang') || '';
+      const rKategori = row.getAttribute('data-kategori') || '';
+
+      const matchBidang = !bVal || rBidang === bVal;
+      const matchKategori = !kVal || rKategori === kVal;
+
+      if (matchBidang && matchKategori) {
+        row.style.display = '';
+        visibleCount++;
+      } else {
+        row.style.display = 'none';
+      }
+    });
+
+    const counter = document.getElementById('totalTableCount');
+    if (counter) counter.innerText = visibleCount;
+  }
+
+  function setFastFilter(type) {
+    const bidangSel = document.getElementById('filterBidang');
+    const katSel = document.getElementById('filterKategori');
+    if (!bidangSel || !katSel) return;
+
+    if (type === 'semua') {
+      bidangSel.value = '';
+      katSel.value = '';
+    } else if (type === 'perumahan') {
+      bidangSel.value = 'Bidang Perumahan';
+      katSel.value = '';
+    } else if (type === 'developer') {
+      bidangSel.value = '';
+      katSel.value = 'Pengembang';
+    } else if (type === 'hari-ini') {
+      document.getElementById('filterPeriode').value = 'hari-ini';
+    }
+    filterData();
+  }
+
+  function handleManualSubmit(e) {
+    e.preventDefault();
+    alert('Data tamu berhasil dicatat ke dalam buku tamu digital Disperkim!');
+    closeModal('modalInputTamu');
+  }
+
+  function downloadCSV() {
+    const csvContent = "data:text/csv;charset=utf-8,No,Tanggal,Waktu,Nama,Instansi,Bidang,Keperluan\n1,24-05-2026,09:15,Ir. Hendra Saputra,PT Mahakam Borneo,Bidang PSU,Serah Terima BAST\n2,24-05-2026,09:40,Siti Masitah,Warga RT 14,Bidang Perumahan,Konsultasi RTLH\n";
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "rekapitulasi_buku_tamu_disperkim_mei_2026.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+  function generateSampleData() {
+    alert('Berhasil memperbarui data sampel buku tamu! 18 data acak Kota Samarinda siap digunakan.');
+  }
+
+  function deleteRow(btn) {
+    if (confirm('Apakah Anda yakin ingin menghapus data buku tamu ini?')) {
+      const tr = btn.closest('tr');
+      if (tr) tr.remove();
+    }
+  }
+
+  function viewDetail(id) {
+    alert('Membuka rincian identitas tamu ID: #' + id);
+  }
+</script></main></div>
+</body></html>

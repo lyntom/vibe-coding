@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Public Sans', 'Plus Jakarta Sans', 'Inter', sans-serif;
+  }
+}
+
+/* Tampilan Khusus Cetak Kop Surat Resmi (@media print) */
+@media print {
+  body {
+    background-color: white !important;
+    color: black !important;
+  }
+
+  /* Sembunyikan elemen navigasi, header website, dan tombol aksi */
+  header,
+  footer,
+  nav,
+  .print\:hidden {
+    display: none !important;
+  }
+
+  /* Area cetak kop surat memenuhi lebar kertas */
+  #printable-area {
+    display: block !important;
+    width: 100% !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+}
