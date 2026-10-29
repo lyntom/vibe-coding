@@ -27,6 +27,11 @@ export const App: React.FC = () => {
         }
       />
 
+      {/* Fallback alias jika dibuka melalui /e-tamu saat mode development */}
+      <Route path="/e-tamu" element={<Navigate to="/" replace />} />
+      <Route path="/e-tamu/login" element={<Navigate to="/login" replace />} />
+      <Route path="/e-tamu/admin" element={<Navigate to="/admin" replace />} />
+
       {/* Fallback rute tidak dikenal diarahkan kembali ke Kiosk */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
