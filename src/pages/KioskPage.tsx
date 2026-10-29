@@ -59,7 +59,7 @@ export const KioskPage: React.FC = () => {
     <div className="min-h-screen flex flex-col bg-background text-on-surface">
       <KioskHeader />
 
-      <main className="flex-1 pt-20">
+      <main className="flex-1">
         <KioskHero onOpenQrModal={() => setIsQrModalOpen(true)} />
 
         <HelperChips

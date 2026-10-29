@@ -6,7 +6,7 @@ export const KioskHeader: React.FC = () => {
   const location = useLocation();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#374774] shadow-[0_2px_12px_rgba(32,48,92,0.18)]">
+    <header className="sticky top-0 z-40 bg-[#374774] shadow-[0_2px_12px_rgba(32,48,92,0.18)]">
       <div className="min-h-20 w-full px-4 sm:px-6 lg:px-8 py-2 flex flex-wrap md:flex-nowrap items-center justify-between gap-3">
         {/* Logo & Judul Instansi */}
         <Link to="/" className="flex items-center gap-3 shrink-0 min-w-0 group">

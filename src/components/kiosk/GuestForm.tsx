@@ -87,7 +87,7 @@ export const GuestForm: React.FC<GuestFormProps> = ({
   };
 
   return (
-    <section id="kiosk-form-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <section id="kiosk-form-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 scroll-mt-24">
       <div className="flex flex-col gap-1 mb-5">
         <div className="flex items-center gap-2">
           <span className="w-6 h-6 rounded-full bg-[#374774] text-white text-xs font-extrabold flex items-center justify-center">

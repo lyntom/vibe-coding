@@ -22,7 +22,7 @@ export const KioskHero: React.FC<KioskHeroProps> = ({ onOpenQrModal }) => {
   }, []);
 
   return (
-    <section className="w-full bg-surface-container-low py-6 md:py-8 px-4 sm:px-6 lg:px-8 border-b border-outline-variant/30">
+    <section className="w-full bg-surface-container-low py-6 sm:py-8 md:py-10 px-4 sm:px-6 lg:px-8 border-b border-outline-variant/30">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
         <div className="flex flex-col gap-2 max-w-3xl">
           <div className="flex items-center gap-2.5">
