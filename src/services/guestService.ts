@@ -1,6 +1,6 @@
 import { GuestEntry, GuestInputPayload } from '../types/guest';
 
-const GUESTS_STORAGE_KEY = 'etamu_disperkim_guests_v1';
+const GUESTS_STORAGE_KEY = 'etamu_disperkim_guests_v2';
 
 // In-memory fallback jika localStorage tidak tersedia / diblokir / mode private
 let inMemoryFallback: GuestEntry[] | null = null;
@@ -62,7 +62,7 @@ export const SAMPLE_SAMARINDA_GUESTS: GuestEntry[] = [
     organizationOrAddress: 'Ketua RT 08 Kelurahan Selili, Samarinda Ilir',
     phoneNumber: '+6281347891122',
     divisionId: 'PSU',
-    purpose: 'Pengajuan permohonan perbaikan 4 titik LPJU (Lampu Penerangan Jalan Umum) gang lingkungan',
+    purpose: 'Konsultasi kelengkapan berkas penyerahan fasilitas umum (jalan lingkungan dan drainase) RT 08 kepada Pemkot Samarinda',
   },
   {
     id: 'guest_samarinda_05',
@@ -84,7 +84,7 @@ export const SAMPLE_SAMARINDA_GUESTS: GuestEntry[] = [
     organizationOrAddress: 'PT. Sinar Lembuswana Mandiri',
     phoneNumber: '+628115890045',
     divisionId: 'PERUMAHAN',
-    purpose: 'Konsultasi kelengkapan dokumen pengesahan site plan perumahan klaster baru Samarinda Utara',
+    purpose: 'Konsultasi persyaratan teknis dan verifikasi perizinan hunian bersubsidi MBR klaster baru Samarinda Utara',
   },
   {
     id: 'guest_samarinda_07',
@@ -95,7 +95,7 @@ export const SAMPLE_SAMARINDA_GUESTS: GuestEntry[] = [
     organizationOrAddress: 'RT 22 Kelurahan Bukuan, Kecamatan Palaran',
     phoneNumber: '+6285388712390',
     divisionId: 'KAWASAN_PERMUKIMAN',
-    purpose: 'Verifikasi kelayakan usulan penerima bantuan rehabilitasi atap dan sanitasi warga prasejahtera',
+    purpose: 'Konsultasi usulan program penataan lingkungan permukiman padat dan normalisasi drainase pencegahan genangan',
   },
   {
     id: 'guest_samarinda_08',
@@ -149,8 +149,8 @@ export const SAMPLE_SAMARINDA_GUESTS: GuestEntry[] = [
     category: 'UMUM',
     organizationOrAddress: 'RT 12 Kelurahan Baqa, Samarinda Seberang',
     phoneNumber: '+6285250443211',
-    divisionId: 'PSU',
-    purpose: 'Laporan kerusakan tiang LPJU roboh akibat terpaan angin kencang di Jl. Bung Tomo',
+    divisionId: 'KAWASAN_PERMUKIMAN',
+    purpose: 'Usulan penanganan darurat perbaikan siring dan jalan lingkungan kayu di permukiman pasang surut',
   },
   {
     id: 'guest_samarinda_13',
@@ -171,8 +171,8 @@ export const SAMPLE_SAMARINDA_GUESTS: GuestEntry[] = [
     category: 'PENGEMBANG',
     organizationOrAddress: 'PT. Bumi Mahakam Graha',
     phoneNumber: '+62811559812',
-    divisionId: 'PERUMAHAN',
-    purpose: 'Verifikasi lapangan pemenuhan kewajiban 2% penyediaan lahan pemakaman perumahan',
+    divisionId: 'PSU',
+    purpose: 'Verifikasi lapangan pemenuhan kewajiban 2% penyediaan lahan pemakaman dan ruang terbuka hijau perumahan',
   },
   {
     id: 'guest_samarinda_15',
@@ -182,8 +182,8 @@ export const SAMPLE_SAMARINDA_GUESTS: GuestEntry[] = [
     category: 'UMUM',
     organizationOrAddress: 'RT 30 Kelurahan Temindung Permai, Sungai Pinang',
     phoneNumber: '+6285348991200',
-    divisionId: 'KAWASAN_PERMUKIMAN',
-    purpose: 'Penyerahan kelengkapan berkas fisik usulan bantuan perbaikan rumah layak huni',
+    divisionId: 'PERUMAHAN',
+    purpose: 'Penyerahan kelengkapan berkas fisik usulan bantuan perbaikan Rumah Tidak Layak Huni (RTLH / BSPS)',
   },
   {
     id: 'guest_samarinda_16',
@@ -204,8 +204,8 @@ export const SAMPLE_SAMARINDA_GUESTS: GuestEntry[] = [
     category: 'UMUM',
     organizationOrAddress: 'RT 17 Kelurahan Lempake, Samarinda Utara',
     phoneNumber: '+6282149887711',
-    divisionId: 'PSU',
-    purpose: 'Permohonan bantuan penerangan lampu jalan lorong akses menuju PAUD lingkungan',
+    divisionId: 'PERUMAHAN',
+    purpose: 'Pendaftaran usulan Bantuan Stimulan Perumahan Swadaya (BSPS) untuk keluarga prasejahtera',
   },
   {
     id: 'guest_samarinda_18',
@@ -215,8 +215,8 @@ export const SAMPLE_SAMARINDA_GUESTS: GuestEntry[] = [
     category: 'PENGEMBANG',
     organizationOrAddress: 'PT. Mitra Mahakam Lestari',
     phoneNumber: '+628115509988',
-    divisionId: 'PERUMAHAN',
-    purpose: 'Konsultasi persyaratan teknis pelepasan hak fasilitas sosial perumahan Grand Mahakam',
+    divisionId: 'PSU',
+    purpose: 'Konsultasi persyaratan teknis serah terima sarana utilitas dan jalan perumahan Grand Mahakam ke Pemkot',
   },
 ];
 

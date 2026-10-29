@@ -4,7 +4,7 @@ import {
   FileText,
   Home,
   MapPin,
-  Lightbulb,
+  Layers,
   Check,
   Building,
   Navigation,
@@ -28,7 +28,7 @@ export const DivisionCards: React.FC<DivisionCardsProps> = ({
       case 'KAWASAN_PERMUKIMAN':
         return <MapPin className="w-5 h-5 text-[#374774]" />;
       case 'PSU':
-        return <Lightbulb className="w-5 h-5 text-[#374774]" />;
+        return <Layers className="w-5 h-5 text-[#374774]" />;
     }
   };
 
