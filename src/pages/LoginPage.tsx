@@ -250,14 +250,14 @@ export const LoginPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Kembali ke Mode Kiosk */}
+        {/* Kembali ke Form Buku Tamu */}
         <div className="mt-8 flex flex-col items-center gap-4 text-center">
           <Link
             to="/"
             className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-[#374774] hover:text-[#2b395d] bg-surface-container-lowest px-4 py-2.5 rounded-xl border border-outline-variant/40 shadow-xs hover:shadow transition-all"
           >
             <ArrowLeft className="w-4 h-4 text-[#EAB630]" />
-            <span>Kembali ke Mode Kiosk / Form Buku Tamu</span>
+            <span>Kembali ke Form Buku Tamu</span>
           </Link>
 
           <div className="text-xs text-on-surface-variant space-y-0.5">
