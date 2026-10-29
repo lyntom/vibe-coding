@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <title>E-Tamu Disperkim Kota Samarinda</title>
+    <!-- Single Page App redirect for GitHub Pages (https://github.com/rafgraph/spa-github-pages) -->
+    <script>
+      var pathSegmentsToKeep = 1; // 1 segment for GitHub Pages repository path (/e-tamu/)
+      var l = window.location;
+      l.replace(
+        l.protocol +
+          '//' +
+          l.hostname +
+          (l.port ? ':' + l.port : '') +
+          l.pathname
+            .split('/')
+            .slice(0, 1 + pathSegmentsToKeep)
+            .join('/') +
+          '/?/' +
+          l.pathname
+            .slice(1)
+            .split('/')
+            .slice(pathSegmentsToKeep)
+            .join('/')
+            .replace(/&/g, '~and~') +
+          (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+          l.hash
+      );
+    </script>
+  </head>
+  <body>
+    <div style="font-family: sans-serif; text-align: center; padding: 50px;">
+      <h2>Memuat E-Tamu Disperkim Kota Samarinda...</h2>
+    </div>
+  </body>
+</html>
