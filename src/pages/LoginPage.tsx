@@ -13,6 +13,8 @@ import {
   AlertCircle,
   CheckCircle2,
   Sparkles,
+  LogIn,
+  ArrowRight,
 } from 'lucide-react';
 
 export const LoginPage: React.FC = () => {
@@ -221,15 +223,27 @@ export const LoginPage: React.FC = () => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full h-13 bg-[#374774] hover:bg-[#2b395d] active:scale-[0.99] text-white font-bold text-sm sm:text-base rounded-xl shadow-md flex items-center justify-center gap-2.5 transition-all disabled:opacity-75 disabled:cursor-wait"
+                className="group relative w-full h-14 bg-gradient-to-r from-[#20305c] via-[#374774] to-[#20305c] hover:from-[#2b395d] hover:to-[#2b395d] active:scale-[0.99] text-white font-bold text-sm sm:text-base rounded-2xl shadow-lg shadow-[#374774]/25 hover:shadow-xl hover:shadow-[#374774]/35 border border-[#EAB630]/40 hover:border-[#EAB630] flex items-center justify-between px-5 transition-all duration-300 disabled:opacity-75 disabled:cursor-wait"
               >
                 {isLoading ? (
-                  <>
-                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                    <span>Memverifikasi Akses ASN...</span>
-                  </>
+                  <div className="w-full flex items-center justify-center gap-3">
+                    <div className="w-5 h-5 border-2 border-[#EAB630] border-t-transparent rounded-full animate-spin" />
+                    <span className="text-sm font-semibold tracking-wide text-[#ffdf9c]">
+                      Memverifikasi Akses ASN...
+                    </span>
+                  </div>
                 ) : (
-                  <span>Masuk ke Dashboard Petugas</span>
+                  <>
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-xl bg-white/10 flex items-center justify-center text-[#EAB630] group-hover:scale-110 transition-transform">
+                        <LogIn className="w-4 h-4" />
+                      </div>
+                      <span className="tracking-wide font-display text-white group-hover:text-[#ffdf9c] transition-colors">
+                        Masuk ke Dashboard Petugas
+                      </span>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-[#EAB630] group-hover:translate-x-1 transition-transform" />
+                  </>
                 )}
               </button>
             </form>
