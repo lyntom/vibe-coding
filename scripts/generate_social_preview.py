@@ -100,21 +100,21 @@ def create_social_preview(output_path="public/github-social-preview.png"):
         font=f_sub
     )
 
-    # Narrative summary
+    # Narrative summary (tanpa kata kiosk)
     draw.text(
         (left_x, 305),
-        "Pencatatan tamu mandiri ramah layar sentuh (kiosk), antrean transparan,\ndan kepastian verifikasi bidang teknis perumahan & kawasan permukiman.",
+        "Pencatatan tamu mandiri ramah layar sentuh, antrean transparan,\ndan kepastian verifikasi bidang teknis perumahan & kawasan permukiman.",
         fill=(180, 192, 220, 240),
         font=f_desc
     )
 
-    # Feature Bullet Chips
+    # Feature Bullet Chips (tanpa "Antrean Otomatis WITA")
     chips_y = 375
     chips = [
-        "Antrean Otomatis WITA",
         "Scan QR Mandiri",
         "Dashboard Petugas",
-        "Ekspor CSV & PDF"
+        "Ekspor CSV & PDF",
+        "Format Kop Surat Resmi"
     ]
     cur_x = left_x
     for chip in chips:
@@ -130,10 +130,10 @@ def create_social_preview(output_path="public/github-social-preview.png"):
         draw.text((cur_x + 22, chips_y + 6), chip, fill=(240, 244, 255, 255), font=f_card_small)
         cur_x += c_w + 10
 
-    # Tech Stack Badges at Bottom Left
+    # Tech Stack Badges at Bottom Left (tanpa "SPBE Standar")
     tech_y = 485
     draw.text((left_x, tech_y - 22), "TEKNOLOGI & ARSITEKTUR:", fill=(140, 160, 200, 200), font=f_card_label)
-    techs = ["React 18", "Vite 6", "TypeScript Strict", "Tailwind CSS", "SPBE Standar"]
+    techs = ["React 18", "Vite 6", "TypeScript Strict", "Tailwind CSS"]
     t_x = left_x
     for t in techs:
         t_w = int(draw.textlength(t, font=f_tech)) + 24
@@ -149,9 +149,9 @@ def create_social_preview(output_path="public/github-social-preview.png"):
 
     # 8. RIGHT SIDE: MOCKUP GLASSMORPHISM UI CARD
     card_x = 750
-    card_y = 75
+    card_y = 95
     card_w = 460
-    card_h = 490
+    card_h = 450
 
     # Card shadow
     card_shadow = Image.new("RGBA", (width, height), (0, 0, 0, 0))
@@ -184,7 +184,6 @@ def create_social_preview(output_path="public/github-social-preview.png"):
         radius=24,
         fill=(32, 48, 92, 255)
     )
-    # Flat bottom for the top header
     draw.rectangle([card_x + 1, card_y + 36, card_x + card_w - 1, card_y + 56], fill=(32, 48, 92, 255))
     draw.line([(card_x, card_y + 56), (card_x + card_w, card_y + 56)], fill=(234, 182, 48, 80), width=1)
 
@@ -227,16 +226,7 @@ def create_social_preview(output_path="public/github-social-preview.png"):
     for label, val in rows:
         draw.text((card_x + 28, info_y), label, fill=(160, 180, 220, 220), font=f_card_small)
         draw.text((card_x + 155, info_y), val, fill=(255, 255, 255, 255), font=f_card_body)
-        info_y += 38
-
-    # Card Footer
-    draw.line([(card_x + 24, card_y + card_h - 55), (card_x + card_w - 24, card_y + card_h - 55)], fill=(255, 255, 255, 25), width=1)
-    draw.text(
-        (card_x + 28, card_y + card_h - 40),
-        "Terintegrasi Standar SPBE & Perlindungan Privasi Data Tamu",
-        fill=(234, 182, 48, 220),
-        font=f_card_small
-    )
+        info_y += 42
 
     # 9. Bottom Accent Line
     draw.rectangle([0, height - 6, width, height], fill=(234, 182, 48, 255))
