@@ -1,6 +1,6 @@
 import { GuestEntry, GuestInputPayload } from '../types/guest';
 
-const GUESTS_STORAGE_KEY = 'etamu_disperkim_guests_v2';
+const GUESTS_STORAGE_KEY = 'etamu_disperkim_guests_v3';
 
 // In-memory fallback jika localStorage tidak tersedia / diblokir / mode private
 let inMemoryFallback: GuestEntry[] | null = null;
@@ -28,8 +28,8 @@ export const SAMPLE_SAMARINDA_GUESTS: GuestEntry[] = [
     category: 'PENGEMBANG',
     organizationOrAddress: 'PT. Mahakam Borneo Properti',
     phoneNumber: '+628115501234',
-    divisionId: 'PSU',
-    purpose: 'Penyerahan BAST Prasarana dan Utilitas Perumahan Pesona Mahakam III ke Pemkot',
+    divisionId: 'PERUMAHAN',
+    purpose: 'Penyerahan fasilitas umum/sosial (PSU) Perumahan Pesona Mahakam III kepada Pemkot',
   },
   {
     id: 'guest_samarinda_02',
@@ -39,8 +39,8 @@ export const SAMPLE_SAMARINDA_GUESTS: GuestEntry[] = [
     category: 'UMUM',
     organizationOrAddress: 'RT 14 Kelurahan Karang Asam Ilir, Sungai Kunjang',
     phoneNumber: '+6285249008871',
-    divisionId: 'PERUMAHAN',
-    purpose: 'Konsultasi program Bantuan Stimulan Rumah Swadaya (BSPS / Bedah Rumah RTLH)',
+    divisionId: 'KAWASAN_PERMUKIMAN',
+    purpose: 'Konsultasi program Bantuan Stimulan Rumah Swadaya (BSPS / RTLH Bedah Rumah)',
   },
   {
     id: 'guest_samarinda_03',
@@ -51,7 +51,7 @@ export const SAMPLE_SAMARINDA_GUESTS: GuestEntry[] = [
     organizationOrAddress: 'Fakultas Teknik Universitas Mulawarman',
     phoneNumber: '+6282153449012',
     divisionId: 'SEKRETARIAT',
-    purpose: 'Pengantaran berkas surat permohonan magang & riset evaluasi kawasan kumuh perkotaan',
+    purpose: 'Pengantaran surat dinas pengajuan PKL & Magang mahasiswa di Bagian Tata Usaha',
   },
   {
     id: 'guest_samarinda_04',
@@ -62,7 +62,7 @@ export const SAMPLE_SAMARINDA_GUESTS: GuestEntry[] = [
     organizationOrAddress: 'Ketua RT 08 Kelurahan Selili, Samarinda Ilir',
     phoneNumber: '+6281347891122',
     divisionId: 'PSU',
-    purpose: 'Konsultasi kelengkapan berkas penyerahan fasilitas umum (jalan lingkungan dan drainase) RT 08 kepada Pemkot Samarinda',
+    purpose: 'Pelaporan kerusakan & pengajuan titik lampu penerangan jalan umum (LPJU) dan drainase gang',
   },
   {
     id: 'guest_samarinda_05',
@@ -73,7 +73,7 @@ export const SAMPLE_SAMARINDA_GUESTS: GuestEntry[] = [
     organizationOrAddress: 'Bapperida Kota Samarinda',
     phoneNumber: '+6281254332190',
     divisionId: 'SEKRETARIAT',
-    purpose: 'Koordinasi sinkronisasi data indikator capaian Renja bidang perumahan dan permukiman TA 2026',
+    purpose: 'Koordinasi kepegawaian dan verifikasi kelengkapan berkas administrasi SPJ kedinasan',
   },
   {
     id: 'guest_samarinda_06',
@@ -84,7 +84,7 @@ export const SAMPLE_SAMARINDA_GUESTS: GuestEntry[] = [
     organizationOrAddress: 'PT. Sinar Lembuswana Mandiri',
     phoneNumber: '+628115890045',
     divisionId: 'PERUMAHAN',
-    purpose: 'Konsultasi persyaratan teknis dan verifikasi perizinan hunian bersubsidi MBR klaster baru Samarinda Utara',
+    purpose: 'Konsultasi kelengkapan dokumen verifikasi site plan pembangunan perumahan komersial formal',
   },
   {
     id: 'guest_samarinda_07',
@@ -95,7 +95,7 @@ export const SAMPLE_SAMARINDA_GUESTS: GuestEntry[] = [
     organizationOrAddress: 'RT 22 Kelurahan Bukuan, Kecamatan Palaran',
     phoneNumber: '+6285388712390',
     divisionId: 'KAWASAN_PERMUKIMAN',
-    purpose: 'Konsultasi usulan program penataan lingkungan permukiman padat dan normalisasi drainase pencegahan genangan',
+    purpose: 'Verifikasi berkas usulan penerima program Bantuan Stimulan Rumah Swadaya (BSPS Bedah Rumah)',
   },
   {
     id: 'guest_samarinda_08',
@@ -106,7 +106,7 @@ export const SAMPLE_SAMARINDA_GUESTS: GuestEntry[] = [
     organizationOrAddress: 'Dinas PUPR-Pera Provinsi Kalimantan Timur',
     phoneNumber: '+6282250119844',
     divisionId: 'SEKRETARIAT',
-    purpose: 'Rapat koordinasi teknis integrasi program DAK pengentasan permukiman kumuh terpadu',
+    purpose: 'Penyampaian surat dinas koordinasi teknis ketatausahaan dan administrasi kedinasan',
   },
   {
     id: 'guest_samarinda_09',
@@ -117,7 +117,7 @@ export const SAMPLE_SAMARINDA_GUESTS: GuestEntry[] = [
     organizationOrAddress: 'DPD Real Estate Indonesia (REI) Kalimantan Timur',
     phoneNumber: '+6281255401123',
     divisionId: 'PERUMAHAN',
-    purpose: 'Audiensi regulasi percepatan perizinan dan standar kelayakan perumahan MBR Kota Samarinda',
+    purpose: 'Audiensi verifikasi site plan hunian formal dan serah terima fasilitas umum (PSU) pengembang',
   },
   {
     id: 'guest_samarinda_10',
@@ -128,7 +128,7 @@ export const SAMPLE_SAMARINDA_GUESTS: GuestEntry[] = [
     organizationOrAddress: 'RT 05 Kelurahan Teluk Lerong Ulu, Sungai Kunjang',
     phoneNumber: '+6281350992311',
     divisionId: 'KAWASAN_PERMUKIMAN',
-    purpose: 'Konsultasi penataan kawasan tepian Sungai Karang Mumus dan saluran drainase lingkungan',
+    purpose: 'Konsultasi program penataan kawasan kumuh dan normalisasi lingkungan tepian Sungai Karang Mumus',
   },
   {
     id: 'guest_samarinda_11',
@@ -139,7 +139,7 @@ export const SAMPLE_SAMARINDA_GUESTS: GuestEntry[] = [
     organizationOrAddress: 'Politeknik Negeri Samarinda (POLNES)',
     phoneNumber: '+628115409871',
     divisionId: 'SEKRETARIAT',
-    purpose: 'Penyampaian draf kerjasama riset pemodelan drainase ramah lingkungan kawasan permukiman',
+    purpose: 'Penyerahan surat dinas permohonan izin riset dan penempatan PKL & Magang mahasiswa',
   },
   {
     id: 'guest_samarinda_12',
@@ -149,8 +149,8 @@ export const SAMPLE_SAMARINDA_GUESTS: GuestEntry[] = [
     category: 'UMUM',
     organizationOrAddress: 'RT 12 Kelurahan Baqa, Samarinda Seberang',
     phoneNumber: '+6285250443211',
-    divisionId: 'KAWASAN_PERMUKIMAN',
-    purpose: 'Usulan penanganan darurat perbaikan siring dan jalan lingkungan kayu di permukiman pasang surut',
+    divisionId: 'PSU',
+    purpose: 'Pelaporan kerusakan tiang LPJU roboh akibat terpaan angin kencang di Jl. Bung Tomo',
   },
   {
     id: 'guest_samarinda_13',
@@ -161,7 +161,7 @@ export const SAMPLE_SAMARINDA_GUESTS: GuestEntry[] = [
     organizationOrAddress: 'Dinas Lingkungan Hidup Kota Samarinda',
     phoneNumber: '+6281346001299',
     divisionId: 'KAWASAN_PERMUKIMAN',
-    purpose: 'Konsolidasi rencana aksi pemantauan sanitasi komunal dan tempat pembuangan sampah terpadu',
+    purpose: 'Konsolidasi rencana aksi pemantauan sanitasi dan penataan kawasan permukiman kumuh tepian air',
   },
   {
     id: 'guest_samarinda_14',
@@ -171,8 +171,8 @@ export const SAMPLE_SAMARINDA_GUESTS: GuestEntry[] = [
     category: 'PENGEMBANG',
     organizationOrAddress: 'PT. Bumi Mahakam Graha',
     phoneNumber: '+62811559812',
-    divisionId: 'PSU',
-    purpose: 'Verifikasi lapangan pemenuhan kewajiban 2% penyediaan lahan pemakaman dan ruang terbuka hijau perumahan',
+    divisionId: 'PERUMAHAN',
+    purpose: 'Verifikasi dokumen serah terima fasilitas umum/sosial (PSU) dan pemakaman perumahan',
   },
   {
     id: 'guest_samarinda_15',
@@ -182,8 +182,8 @@ export const SAMPLE_SAMARINDA_GUESTS: GuestEntry[] = [
     category: 'UMUM',
     organizationOrAddress: 'RT 30 Kelurahan Temindung Permai, Sungai Pinang',
     phoneNumber: '+6285348991200',
-    divisionId: 'PERUMAHAN',
-    purpose: 'Penyerahan kelengkapan berkas fisik usulan bantuan perbaikan Rumah Tidak Layak Huni (RTLH / BSPS)',
+    divisionId: 'KAWASAN_PERMUKIMAN',
+    purpose: 'Penyerahan kelengkapan berkas fisik usulan Bantuan Stimulan Rumah Swadaya (BSPS / Bedah Rumah RTLH)',
   },
   {
     id: 'guest_samarinda_16',
@@ -194,7 +194,7 @@ export const SAMPLE_SAMARINDA_GUESTS: GuestEntry[] = [
     organizationOrAddress: 'Bagian Hukum Setda Kota Samarinda',
     phoneNumber: '+6281251993450',
     divisionId: 'SEKRETARIAT',
-    purpose: 'Harmonisasi draf Peraturan Walikota tentang tata cara penyerahan PSU pengembang perumahan',
+    purpose: 'Verifikasi surat dinas dan disposisi pimpinan terkait naskah hukum kedinasan',
   },
   {
     id: 'guest_samarinda_17',
@@ -204,8 +204,8 @@ export const SAMPLE_SAMARINDA_GUESTS: GuestEntry[] = [
     category: 'UMUM',
     organizationOrAddress: 'RT 17 Kelurahan Lempake, Samarinda Utara',
     phoneNumber: '+6282149887711',
-    divisionId: 'PERUMAHAN',
-    purpose: 'Pendaftaran usulan Bantuan Stimulan Perumahan Swadaya (BSPS) untuk keluarga prasejahtera',
+    divisionId: 'PSU',
+    purpose: 'Pengajuan titik lampu penerangan jalan umum (LPJU) baru dan sarana bermain anak lingkungan gang',
   },
   {
     id: 'guest_samarinda_18',
@@ -215,8 +215,8 @@ export const SAMPLE_SAMARINDA_GUESTS: GuestEntry[] = [
     category: 'PENGEMBANG',
     organizationOrAddress: 'PT. Mitra Mahakam Lestari',
     phoneNumber: '+628115509988',
-    divisionId: 'PSU',
-    purpose: 'Konsultasi persyaratan teknis serah terima sarana utilitas dan jalan perumahan Grand Mahakam ke Pemkot',
+    divisionId: 'PERUMAHAN',
+    purpose: 'Konsultasi persyaratan verifikasi site plan dan penyerahan PSU perumahan Grand Mahakam',
   },
 ];
 
