@@ -34,7 +34,7 @@ export const KioskHero: React.FC<KioskHeroProps> = ({ onOpenQrModal }) => {
             Selamat Datang di Disperkim Kota Samarinda
           </h1>
           <p className="text-sm md:text-base text-on-surface-variant leading-relaxed">
-            Silakan isi buku tamu digital untuk kemudahan layanan, kepastian tujuan dinas, dan transparansi antrean pelayanan publik warga Kota Tepian.
+            Silakan isi buku tamu digital untuk kemudahan layanan, kepastian tujuan dinas, dan transparansi antrean pelayanan publik warga Kota Samarinda.
           </p>
         </div>
 
