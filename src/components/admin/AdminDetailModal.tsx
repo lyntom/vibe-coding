@@ -91,7 +91,7 @@ export const AdminDetailModal: React.FC<AdminDetailModalProps> = ({ guest, onClo
             <div className="flex items-start gap-2.5">
               <MapPin className="w-4 h-4 text-[#374774] shrink-0 mt-0.5" />
               <div>
-                <span className="text-on-surface-variant text-[11px] block">Bidang & Lokasi Ruangan:</span>
+                <span className="text-on-surface-variant text-[11px] block">Bidang & Lokasi:</span>
                 <span className={`inline-block font-bold text-xs px-2.5 py-0.5 rounded-full mt-0.5 ${divisionMeta?.badgeClass}`}>
                   {divisionMeta?.name}
                 </span>

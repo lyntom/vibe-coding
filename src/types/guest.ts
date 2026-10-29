@@ -70,7 +70,7 @@ export const DIVISIONS_METADATA: Record<DivisionId, DivisionMetadata> = {
     shortName: 'Sekretariat',
     subtitle: 'Tata Usaha, Kepegawaian & Keuangan',
     floorBadge: 'Lantai 1',
-    roomGuide: 'Lantai 1 - Sayap Kiri',
+    roomGuide: 'Lantai 1',
     description:
       'Tata Usaha, surat dinas, kepegawaian, verifikasi SPJ, pengajuan PKL & Magang mahasiswa.',
     quickChipLabel: 'Surat Masuk / SPJ Keuangan / PKL & Magang',
@@ -82,7 +82,7 @@ export const DIVISIONS_METADATA: Record<DivisionId, DivisionMetadata> = {
     shortName: 'Bidang Perumahan',
     subtitle: 'PSU Developer & Hunian Formal',
     floorBadge: 'Lantai 2',
-    roomGuide: 'Lantai 2 - Ruang 204',
+    roomGuide: 'Lantai 2',
     description:
       'Serah terima fasilitas umum/sosial (PSU) perumahan developer, verifikasi site plan, hunian formal.',
     quickChipLabel: 'Serah Terima Fasum-Fasos (PSU) Developer',
@@ -94,7 +94,7 @@ export const DIVISIONS_METADATA: Record<DivisionId, DivisionMetadata> = {
     shortName: 'Bid. Kawasan Permukiman',
     subtitle: 'BSPS, RTLH & Kawasan Kumuh',
     floorBadge: 'Lantai 2',
-    roomGuide: 'Lantai 2 - Ruang 207',
+    roomGuide: 'Lantai 2',
     description:
       'Program Bantuan Stimulan Rumah Swadaya (BSPS / RTLH Bedah Rumah), penataan kawasan kumuh & tepian sungai.',
     quickChipLabel: 'Bantuan Stimulan BSPS / RTLH Bedah Rumah',
@@ -106,7 +106,7 @@ export const DIVISIONS_METADATA: Record<DivisionId, DivisionMetadata> = {
     shortName: 'Bidang PSU',
     subtitle: 'Lampu Penerangan Jalan Umum (LPJU)',
     floorBadge: 'Lantai 2',
-    roomGuide: 'Lantai 2 - Sayap Kanan',
+    roomGuide: 'Lantai 2',
     description:
       'Pelaporan kerusakan & pengajuan titik lampu penerangan jalan umum (LPJU).',
     quickChipLabel: 'Pelaporan & Pengajuan Lampu Jalan (LPJU)',

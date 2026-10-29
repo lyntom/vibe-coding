@@ -114,7 +114,7 @@ export const SuccessModal: React.FC<SuccessModalProps> = ({ guest, onClose }) =>
             <div className="mt-4 bg-[#FFF8E7] border border-[#EAB630]/50 rounded-xl p-3 flex items-start gap-2.5 text-xs text-[#785a00]">
               <MapPin className="w-4 h-4 text-[#EAB630] shrink-0 mt-0.5" />
               <div>
-                <span className="font-bold block">Silakan Menuju ke Ruangan:</span>
+                <span className="font-bold block">Silakan Menuju ke:</span>
                 <span className="font-medium">{divisionMeta.roomGuide}</span>
               </div>
             </div>

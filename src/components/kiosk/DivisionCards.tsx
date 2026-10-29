@@ -132,7 +132,7 @@ export const DivisionCards: React.FC<DivisionCardsProps> = ({
                   <div className="bg-[#FFF8E7] border border-[#EAB630]/40 rounded-xl p-2.5 text-xs text-[#785a00] flex items-start gap-2">
                     <Navigation className="w-4 h-4 text-[#EAB630] shrink-0 mt-0.5" />
                     <div>
-                      <span className="font-bold block">Petunjuk Ruangan:</span>
+                      <span className="font-bold block">Lokasi Layanan:</span>
                       <span>{meta.roomGuide}</span>
                     </div>
                   </div>
