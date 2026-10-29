@@ -4,10 +4,13 @@ import { KioskPage } from './pages/KioskPage';
 import { LoginPage } from './pages/LoginPage';
 import { AdminPage } from './pages/AdminPage';
 import { ProtectedRoute } from './components/common/ProtectedRoute';
+import { ScrollToTop } from './components/common/ScrollToTop';
 
 export const App: React.FC = () => {
   return (
-    <Routes>
+    <>
+      <ScrollToTop />
+      <Routes>
       {/* Rute 1: Mode Kiosk & Form Tamu Publik */}
       <Route path="/" element={<KioskPage />} />
 
@@ -27,7 +30,8 @@ export const App: React.FC = () => {
       {/* Fallback rute tidak dikenal diarahkan kembali ke Kiosk */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
-  );
+  </>
+);
 };
 
 export default App;
