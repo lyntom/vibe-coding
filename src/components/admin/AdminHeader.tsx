@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { authService, AuthSession } from '../../services/authService';
 import { Building2, User, LogOut, ExternalLink } from 'lucide-react';
+import { AdminLogoutModal } from './AdminLogoutModal';
 
 interface AdminHeaderProps {
   currentSession: AuthSession | null;
@@ -9,11 +10,17 @@ interface AdminHeaderProps {
 
 export const AdminHeader: React.FC<AdminHeaderProps> = ({ currentSession }) => {
   const navigate = useNavigate();
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
 
-  const handleLogout = async () => {
-    if (window.confirm('Apakah Anda yakin ingin keluar dari Dashboard Petugas?')) {
+  const handleConfirmLogout = async () => {
+    setIsLoggingOut(true);
+    try {
       await authService.logout();
       navigate('/login', { replace: true });
+    } finally {
+      setIsLoggingOut(false);
+      setIsLogoutModalOpen(false);
     }
   };
 
@@ -67,9 +74,9 @@ export const AdminHeader: React.FC<AdminHeaderProps> = ({ currentSession }) => {
             {/* Logout Button */}
             <button
               type="button"
-              onClick={handleLogout}
+              onClick={() => setIsLogoutModalOpen(true)}
               title="Keluar Sesi"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-white/10 hover:bg-red-600/80 text-white transition-all active:scale-95 border border-white/20"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-white/10 hover:bg-red-600/80 text-white transition-all active:scale-95 border border-white/20 cursor-pointer"
             >
               <LogOut className="w-4 h-4" />
               <span className="hidden sm:inline">Keluar</span>
@@ -80,6 +87,14 @@ export const AdminHeader: React.FC<AdminHeaderProps> = ({ currentSession }) => {
 
       {/* Garis Aksen Emas */}
       <div className="h-[3px] w-full bg-gradient-to-r from-[#EAB630] via-[#ffd677] to-[#EAB630]" />
+
+      {/* Modal Konfirmasi Keluar */}
+      <AdminLogoutModal
+        isOpen={isLogoutModalOpen}
+        onClose={() => setIsLogoutModalOpen(false)}
+        onConfirm={handleConfirmLogout}
+        isLoading={isLoggingOut}
+      />
     </header>
   );
 };
