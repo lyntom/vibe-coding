@@ -1,9 +1,15 @@
 # E-Tamu Disperkim Kota Samarinda
 
+![E-Tamu Disperkim Kota Samarinda Social Preview](public/github-social-preview.png)
+
 > **Sistem Informasi Buku Tamu Digital & Rekapitulasi Pelayanan Publik**  
 > Dinas Perumahan dan Kawasan Permukiman (Disperkim) Pemerintah Kota Samarinda.
 
-Aplikasi web modern berbasis layar sentuh (*Kiosk Mode*) untuk pelayanan publik warga Kota Tepian, terintegrasi dengan portal petugas piket serta dashboard rekapitulasi data dan pencetakan laporan resmi berstandar SPBE Kota Samarinda.
+Aplikasi web modern berbasis layar sentuh (*Kiosk Mode*) untuk pelayanan publik warga Kota Samarinda, terintegrasi dengan portal petugas piket serta dashboard rekapitulasi data dan pencetakan laporan resmi berstandar SPBE Kota Samarinda.
+
+- 🌐 **Live Demo (GitHub Pages):** [https://lyntom.github.io/e-tamu](https://lyntom.github.io/e-tamu)
+- 📦 **Repositori Sumber:** [https://github.com/lyntom/vibe-coding](https://github.com/lyntom/vibe-coding)
+- 🚀 **Repositori Distribusi:** [https://github.com/lyntom/e-tamu](https://github.com/lyntom/e-tamu)
 
 ---
 
