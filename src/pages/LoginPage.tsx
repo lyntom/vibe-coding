@@ -247,7 +247,7 @@ export const LoginPage: React.FC = () => {
           </Link>
 
           <div className="text-xs text-on-surface-variant space-y-0.5">
-            <p className="font-semibold">Pemerintah Kota Samarinda • Sistem Informasi Layanan Terpadu SPBE</p>
+            <p className="font-semibold">Pemerintah Kota Samarinda</p>
             <p className="text-[11px] opacity-75">
               Buku Tamu Digital © 2026 Bidang Perumahan • Bidang Kawasan Permukiman • Bidang PSU • Sekretariat
             </p>
