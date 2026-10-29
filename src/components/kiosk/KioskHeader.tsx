@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { CheckCircle2, Shield, User, Building2 } from 'lucide-react';
+import { CheckCircle2, User, Building2 } from 'lucide-react';
 
 export const KioskHeader: React.FC = () => {
   const location = useLocation();
@@ -42,7 +42,7 @@ export const KioskHeader: React.FC = () => {
                   : 'text-[#dbe1ff] hover:text-white hover:bg-white/10'
               }`}
             >
-              Mode Kiosk / Form Tamu
+              Form Tamu
             </Link>
             <Link
               to="/login"
@@ -53,17 +53,6 @@ export const KioskHeader: React.FC = () => {
               }`}
             >
               Portal Petugas
-            </Link>
-            <Link
-              to="/admin"
-              className={`px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-semibold transition-all whitespace-nowrap flex items-center gap-1.5 ${
-                location.pathname === '/admin'
-                  ? 'bg-[#20305c] text-white shadow-sm border border-[#EAB630]/50'
-                  : 'text-[#dbe1ff] hover:text-white hover:bg-white/10'
-              }`}
-            >
-              <Shield className="w-3.5 h-3.5 text-[#EAB630]" />
-              Dashboard Admin
             </Link>
           </nav>
           <div className="w-8 h-8 rounded-full bg-[#20305c] border border-white/20 flex items-center justify-center shrink-0 text-[#EAB630]">
