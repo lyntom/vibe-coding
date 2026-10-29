@@ -115,11 +115,8 @@ export const KioskFooter: React.FC = () => {
         </div>
 
         {/* Baris Hak Cipta */}
-        <div className="pt-6 border-t border-outline-variant/20 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-on-surface-variant">
+        <div className="pt-6 border-t border-outline-variant/20 text-center sm:text-left text-xs text-on-surface-variant">
           <p>© 2026 Pemerintah Kota Samarinda. E-Tamu Dinas Perumahan dan Kawasan Permukiman.</p>
-          <p className="uppercase tracking-wider text-[#785a00] font-bold text-[11px]">
-            Aman • Tertib • Terdata
-          </p>
         </div>
       </div>
     </footer>
