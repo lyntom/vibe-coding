@@ -16,7 +16,6 @@ import {
   Clock,
   CheckCircle,
   Users,
-  ShieldCheck,
 } from 'lucide-react';
 
 interface GuestFormProps {
@@ -360,17 +359,6 @@ export const GuestForm: React.FC<GuestFormProps> = ({
               <CheckCircle className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
               <span>Sistem antrean sinkron secara real-time.</span>
             </p>
-          </div>
-
-          {/* Kartu Touchscreen Standby */}
-          <div className="bg-[#374774] text-white rounded-2xl p-5 shadow-sm border border-[#EAB630]/30 flex items-start gap-3">
-            <ShieldCheck className="w-6 h-6 text-[#EAB630] shrink-0 mt-0.5" />
-            <div className="text-xs">
-              <h4 className="font-bold text-sm mb-1 text-white">Privasi Data Tamu Terjaga</h4>
-              <p className="text-[#dbe1ff] leading-relaxed">
-                Sesuai UU Perlindungan Data Pribadi (UU PDP), layar konfirmasi tiket akan otomatis tereset dalam 10 detik agar identitas Anda tidak terbaca pengunjung berikutnya.
-              </p>
-            </div>
           </div>
         </div>
       </div>

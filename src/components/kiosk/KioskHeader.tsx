@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { CheckCircle2, User, Building2 } from 'lucide-react';
+import { User, Building2 } from 'lucide-react';
 
 export const KioskHeader: React.FC = () => {
   const location = useLocation();
@@ -22,14 +22,6 @@ export const KioskHeader: React.FC = () => {
             </span>
           </div>
         </Link>
-
-        {/* Status Publik Aktif (Desktop) */}
-        <div className="hidden xl:flex items-center gap-2 bg-[#20305c]/80 px-4 py-1.5 rounded-full border border-[#EAB630]/40 shrink-0">
-          <CheckCircle2 className="w-4 h-4 text-[#EAB630]" />
-          <span className="text-xs text-[#ffdf9c] tracking-wider whitespace-nowrap font-bold">
-            PELAYANAN PUBLIK AKTIF
-          </span>
-        </div>
 
         {/* Navigasi Rute */}
         <div className="flex items-center gap-2 overflow-x-auto max-w-full py-1">
