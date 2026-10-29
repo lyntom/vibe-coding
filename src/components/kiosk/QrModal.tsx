@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import QRCode from 'qrcode';
 import { X, Smartphone, Globe, Copy, Check } from 'lucide-react';
 
 interface QrModalProps {
@@ -8,14 +9,31 @@ interface QrModalProps {
 
 export const QrModal: React.FC<QrModalProps> = ({ isOpen, onClose }) => {
   const [copied, setCopied] = useState(false);
-  const [qrImgError, setQrImgError] = useState(false);
-
-  if (!isOpen) return null;
+  const [qrSvg, setQrSvg] = useState<string>('');
 
   const targetUrl = 'https://lyntom.github.io/e-tamu';
-  const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=${encodeURIComponent(
-    targetUrl
-  )}&color=37-71-116`;
+
+  useEffect(() => {
+    // Generate QR Code SVG lokal secara instan tanpa latensi jaringan internet
+    QRCode.toString(
+      targetUrl,
+      {
+        type: 'svg',
+        margin: 1,
+        color: {
+          dark: '#374774',
+          light: '#FFFFFF',
+        },
+      },
+      (err, string) => {
+        if (!err && string) {
+          setQrSvg(string);
+        }
+      }
+    );
+  }, [targetUrl]);
+
+  if (!isOpen) return null;
 
   const handleCopy = async () => {
     try {
@@ -36,7 +54,7 @@ export const QrModal: React.FC<QrModalProps> = ({ isOpen, onClose }) => {
         <button
           type="button"
           onClick={onClose}
-          className="absolute top-4 right-4 w-9 h-9 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant flex items-center justify-center transition-colors"
+          className="absolute top-4 right-4 w-9 h-9 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant flex items-center justify-center transition-colors cursor-pointer"
         >
           <X className="w-5 h-5" />
         </button>
@@ -52,56 +70,19 @@ export const QrModal: React.FC<QrModalProps> = ({ isOpen, onClose }) => {
           Arahkan kamera smartphone Anda ke QR code di bawah ini untuk membuka buku tamu digital langsung di perangkat Anda.
         </p>
 
-        {/* QR Code Container */}
+        {/* QR Code Container (Render Instan Offline) */}
         <div className="bg-white p-4 rounded-2xl shadow-inner border border-outline-variant/50 inline-block mx-auto mb-4">
-          {!qrImgError ? (
-            <img
-              src={qrApiUrl}
-              alt="QR Code E-Tamu Disperkim Samarinda"
-              onError={() => setQrImgError(true)}
-              className="w-48 h-48 sm:w-56 sm:h-56 mx-auto object-contain rounded-lg"
+          {qrSvg ? (
+            <div
+              className="w-48 h-48 sm:w-56 sm:h-56 mx-auto flex items-center justify-center [&_svg]:w-full [&_svg]:h-full"
+              dangerouslySetInnerHTML={{ __html: qrSvg }}
             />
           ) : (
-            <svg
-              className="w-48 h-48 sm:w-56 sm:h-56 mx-auto"
-              viewBox="0 0 200 200"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect width="200" height="200" fill="white" />
-              {/* Position Detection Markers */}
-              <rect x="20" y="20" width="50" height="50" rx="6" fill="#374774" />
-              <rect x="28" y="28" width="34" height="34" rx="3" fill="white" />
-              <rect x="36" y="36" width="18" height="18" rx="2" fill="#EAB630" />
-
-              <rect x="130" y="20" width="50" height="50" rx="6" fill="#374774" />
-              <rect x="138" y="28" width="34" height="34" rx="3" fill="white" />
-              <rect x="146" y="36" width="18" height="18" rx="2" fill="#EAB630" />
-
-              <rect x="20" y="130" width="50" height="50" rx="6" fill="#374774" />
-              <rect x="28" y="138" width="34" height="34" rx="3" fill="white" />
-              <rect x="36" y="146" width="18" height="18" rx="2" fill="#EAB630" />
-
-              <rect x="80" y="25" width="12" height="12" rx="2" fill="#374774" />
-              <rect x="100" y="25" width="12" height="12" rx="2" fill="#374774" />
-              <rect x="80" y="45" width="12" height="12" rx="2" fill="#374774" />
-              <rect x="100" y="45" width="12" height="12" rx="2" fill="#EAB630" />
-
-              <rect x="25" y="80" width="12" height="12" rx="2" fill="#374774" />
-              <rect x="45" y="80" width="12" height="12" rx="2" fill="#EAB630" />
-              <rect x="25" y="100" width="12" height="12" rx="2" fill="#374774" />
-              <rect x="45" y="100" width="12" height="12" rx="2" fill="#374774" />
-
-              <rect x="80" y="80" width="12" height="12" rx="2" fill="#374774" />
-              <rect x="100" y="80" width="12" height="12" rx="2" fill="#374774" />
-              <rect x="120" y="80" width="12" height="12" rx="2" fill="#EAB630" />
-              <rect x="140" y="80" width="12" height="12" rx="2" fill="#374774" />
-
-              <rect x="80" y="125" width="12" height="12" rx="2" fill="#374774" />
-              <rect x="100" y="125" width="12" height="12" rx="2" fill="#374774" />
-              <rect x="130" y="125" width="12" height="12" rx="2" fill="#374774" />
-              <rect x="150" y="125" width="12" height="12" rx="2" fill="#374774" />
-            </svg>
+            <img
+              src="./qr-code.png"
+              alt="QR Code E-Tamu Disperkim Samarinda"
+              className="w-48 h-48 sm:w-56 sm:h-56 mx-auto object-contain rounded-lg"
+            />
           )}
         </div>
 
@@ -122,7 +103,7 @@ export const QrModal: React.FC<QrModalProps> = ({ isOpen, onClose }) => {
           <button
             type="button"
             onClick={handleCopy}
-            className="shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-container-lowest hover:bg-surface-container text-[#374774] font-bold text-[11px] border border-outline-variant/40 shadow-xs transition-all active:scale-95"
+            className="shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-container-lowest hover:bg-surface-container text-[#374774] font-bold text-[11px] border border-outline-variant/40 shadow-xs transition-all active:scale-95 cursor-pointer"
           >
             {copied ? (
               <>
@@ -142,7 +123,7 @@ export const QrModal: React.FC<QrModalProps> = ({ isOpen, onClose }) => {
           <button
             type="button"
             onClick={onClose}
-            className="w-full py-3 rounded-xl bg-surface-container-high hover:bg-surface-container text-[#374774] font-bold text-xs sm:text-sm transition-colors"
+            className="w-full py-3 rounded-xl bg-surface-container-high hover:bg-surface-container text-[#374774] font-bold text-xs sm:text-sm transition-colors cursor-pointer"
           >
             Tutup
           </button>
