@@ -105,8 +105,8 @@ export const DIVISIONS_METADATA: Record<DivisionId, DivisionMetadata> = {
     name: 'Bidang Prasarana, Sarana, dan Utilitas Umum (PSU)',
     shortName: 'Bidang PSU',
     subtitle: 'Lampu Penerangan Jalan Umum (LPJU)',
-    floorBadge: 'Lantai 1',
-    roomGuide: 'Lantai 1 - Sayap Kanan',
+    floorBadge: 'Lantai 2',
+    roomGuide: 'Lantai 2 - Sayap Kanan',
     description:
       'Pelaporan kerusakan & pengajuan titik lampu penerangan jalan umum (LPJU).',
     quickChipLabel: 'Pelaporan & Pengajuan Lampu Jalan (LPJU)',
