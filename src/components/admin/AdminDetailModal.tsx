@@ -15,10 +15,10 @@ export const AdminDetailModal: React.FC<AdminDetailModalProps> = ({ guest, onClo
   const { dateStr, timeStr } = formatDisplayDateTime(guest.createdAt);
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in duration-200">
-      <div className="relative w-full max-w-lg bg-surface-container-lowest rounded-3xl shadow-2xl border border-outline-variant/40 overflow-hidden">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 sm:p-6 py-8 sm:py-12 animate-in fade-in duration-200">
+      <div className="relative w-full max-w-lg bg-surface-container-lowest rounded-3xl shadow-2xl border border-outline-variant/40 overflow-hidden my-auto max-h-[calc(100vh-4rem)] sm:max-h-[calc(100vh-6rem)] flex flex-col">
         {/* Header Modal */}
-        <div className="px-6 py-4 bg-surface-container-low border-b border-outline-variant/30 flex items-center justify-between">
+        <div className="px-6 py-4 bg-surface-container-low border-b border-outline-variant/30 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-2">
             <Ticket className="w-5 h-5 text-[#374774]" />
             <h3 className="text-base font-bold text-on-surface font-display">
@@ -28,13 +28,13 @@ export const AdminDetailModal: React.FC<AdminDetailModalProps> = ({ guest, onClo
           <button
             type="button"
             onClick={onClose}
-            className="w-8 h-8 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant flex items-center justify-center transition-colors"
+            className="w-8 h-8 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant flex items-center justify-center transition-colors cursor-pointer"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
-        <div className="p-6 space-y-4 text-xs sm:text-sm">
+        <div className="p-6 space-y-4 text-xs sm:text-sm overflow-y-auto flex-1">
           {/* Nomor Tiket Card */}
           <div className="bg-[#374774] text-white p-4 rounded-2xl flex items-center justify-between">
             <div>
@@ -112,16 +112,17 @@ export const AdminDetailModal: React.FC<AdminDetailModalProps> = ({ guest, onClo
               {guest.purpose}
             </p>
           </div>
+        </div>
 
-          <div className="pt-2">
-            <button
-              type="button"
-              onClick={onClose}
-              className="w-full py-2.5 rounded-xl bg-surface-container-high hover:bg-surface-container text-[#374774] font-bold text-xs sm:text-sm transition-colors"
-            >
-              Tutup
-            </button>
-          </div>
+        {/* Footer Modal */}
+        <div className="px-6 py-4 bg-surface-container-low/70 border-t border-outline-variant/20 shrink-0">
+          <button
+            type="button"
+            onClick={onClose}
+            className="w-full py-2.5 rounded-xl bg-surface-container-high hover:bg-surface-container text-[#374774] font-bold text-xs sm:text-sm transition-colors cursor-pointer shadow-xs"
+          >
+            Tutup
+          </button>
         </div>
       </div>
     </div>

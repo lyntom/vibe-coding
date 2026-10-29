@@ -97,10 +97,10 @@ export const AdminGuestModal: React.FC<AdminGuestModalProps> = ({
   const activeCategoryMeta = CATEGORIES_METADATA[category];
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in duration-200">
-      <div className="relative w-full max-w-xl bg-surface-container-lowest rounded-3xl shadow-2xl border border-outline-variant/40 overflow-hidden">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 sm:p-6 py-8 sm:py-12 animate-in fade-in duration-200">
+      <div className="relative w-full max-w-xl bg-surface-container-lowest rounded-3xl shadow-2xl border border-outline-variant/40 overflow-hidden my-auto max-h-[calc(100vh-4rem)] sm:max-h-[calc(100vh-6rem)] flex flex-col">
         {/* Header Modal */}
-        <div className="px-6 py-4 bg-surface-container-low border-b border-outline-variant/30 flex items-center justify-between">
+        <div className="px-6 py-4 bg-surface-container-low border-b border-outline-variant/30 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-2.5">
             <div className="w-9 h-9 rounded-xl bg-[#374774] text-[#EAB630] flex items-center justify-center">
               {isEditing ? <Edit2 className="w-5 h-5" /> : <UserPlus className="w-5 h-5" />}
@@ -120,20 +120,21 @@ export const AdminGuestModal: React.FC<AdminGuestModalProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="w-8 h-8 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant flex items-center justify-center transition-colors"
+            className="w-8 h-8 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant flex items-center justify-center transition-colors cursor-pointer"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
         {/* Form Body */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-4">
-          {errors.form && (
-            <div className="p-3 rounded-xl bg-error-container text-on-error-container text-xs flex items-center gap-2">
-              <AlertCircle className="w-4 h-4 text-error shrink-0" />
-              <span>{errors.form}</span>
-            </div>
-          )}
+        <form onSubmit={handleSubmit} className="flex flex-col flex-1 overflow-hidden">
+          <div className="p-6 space-y-4 overflow-y-auto flex-1">
+            {errors.form && (
+              <div className="p-3 rounded-xl bg-error-container text-on-error-container text-xs flex items-center gap-2">
+                <AlertCircle className="w-4 h-4 text-error shrink-0" />
+                <span>{errors.form}</span>
+              </div>
+            )}
 
           {/* Nama Lengkap */}
           <div>
@@ -237,20 +238,21 @@ export const AdminGuestModal: React.FC<AdminGuestModalProps> = ({
             />
             {errors.purpose && <p className="text-xs text-error mt-1">{errors.purpose}</p>}
           </div>
+        </div>
 
-          {/* Action Buttons */}
-          <div className="pt-3 border-t border-outline-variant/30 flex justify-end gap-2.5">
+        {/* Action Buttons */}
+          <div className="px-6 py-4 bg-surface-container-low/70 border-t border-outline-variant/30 flex justify-end gap-2.5 shrink-0">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2.5 rounded-xl border border-outline-variant/60 text-xs sm:text-sm font-semibold hover:bg-surface-container text-on-surface"
+              className="px-4 py-2.5 rounded-xl border border-outline-variant/60 text-xs sm:text-sm font-semibold hover:bg-surface-container text-on-surface cursor-pointer"
             >
               Batal
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#374774] hover:bg-[#2b395d] text-white text-xs sm:text-sm font-bold shadow-xs active:scale-95 disabled:opacity-75"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#374774] hover:bg-[#2b395d] text-white text-xs sm:text-sm font-bold shadow-xs active:scale-95 disabled:opacity-75 cursor-pointer"
             >
               {isSubmitting ? (
                 <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />

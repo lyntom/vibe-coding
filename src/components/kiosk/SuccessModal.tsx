@@ -36,10 +36,10 @@ export const SuccessModal: React.FC<SuccessModalProps> = ({ guest, onClose }) =>
   const progressPercent = (countdown / 10) * 100;
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in duration-200">
-      <div className="relative w-full max-w-lg bg-surface-container-lowest rounded-3xl shadow-2xl border border-outline-variant/40 overflow-hidden">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 sm:p-6 py-8 sm:py-12 animate-in fade-in duration-200">
+      <div className="relative w-full max-w-lg bg-surface-container-lowest rounded-3xl shadow-2xl border border-outline-variant/40 overflow-hidden my-auto max-h-[calc(100vh-4rem)] sm:max-h-[calc(100vh-6rem)] flex flex-col">
         {/* Progress Bar Countdown (Privasi UU PDP) */}
-        <div className="w-full bg-surface-container-low h-1.5">
+        <div className="w-full bg-surface-container-low h-1.5 shrink-0">
           <div
             className="h-full bg-[#EAB630] transition-all duration-1000 ease-linear"
             style={{ width: `${progressPercent}%` }}
@@ -50,12 +50,12 @@ export const SuccessModal: React.FC<SuccessModalProps> = ({ guest, onClose }) =>
         <button
           type="button"
           onClick={onClose}
-          className="absolute top-4 right-4 w-9 h-9 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant flex items-center justify-center transition-colors"
+          className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant flex items-center justify-center transition-colors cursor-pointer"
         >
           <X className="w-5 h-5" />
         </button>
 
-        <div className="p-6 sm:p-8">
+        <div className="p-6 sm:p-8 overflow-y-auto flex-1">
           {/* Header Berhasil */}
           <div className="flex flex-col items-center text-center mb-6">
             <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mb-3 shadow-xs">
