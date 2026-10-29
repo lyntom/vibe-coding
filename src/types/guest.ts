@@ -104,12 +104,12 @@ export const DIVISIONS_METADATA: Record<DivisionId, DivisionMetadata> = {
     id: 'PSU',
     name: 'Bidang Prasarana, Sarana, dan Utilitas Umum (PSU)',
     shortName: 'Bidang PSU',
-    subtitle: 'LPJU, Drainase Gang & Sarana Bermain',
+    subtitle: 'Lampu Penerangan Jalan Umum (LPJU)',
     floorBadge: 'Lantai 1',
     roomGuide: 'Lantai 1 - Sayap Kanan',
     description:
-      'Pelaporan kerusakan & pengajuan titik lampu penerangan jalan umum (LPJU), drainase gang, sarana bermain.',
-    quickChipLabel: 'Pelaporan / Pengajuan LPJU & Drainase Gang',
+      'Pelaporan kerusakan & pengajuan titik lampu penerangan jalan umum (LPJU).',
+    quickChipLabel: 'Pelaporan & Pengajuan Lampu Jalan (LPJU)',
     badgeClass: 'bg-amber-100 text-amber-900 border border-[#EAB630]/40',
   },
 };

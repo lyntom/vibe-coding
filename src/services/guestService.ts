@@ -1,6 +1,6 @@
 import { GuestEntry, GuestInputPayload } from '../types/guest';
 
-const GUESTS_STORAGE_KEY = 'etamu_disperkim_guests_v3';
+const GUESTS_STORAGE_KEY = 'etamu_disperkim_guests_v4';
 
 // In-memory fallback jika localStorage tidak tersedia / diblokir / mode private
 let inMemoryFallback: GuestEntry[] | null = null;
@@ -62,7 +62,7 @@ export const SAMPLE_SAMARINDA_GUESTS: GuestEntry[] = [
     organizationOrAddress: 'Ketua RT 08 Kelurahan Selili, Samarinda Ilir',
     phoneNumber: '+6281347891122',
     divisionId: 'PSU',
-    purpose: 'Pelaporan kerusakan & pengajuan titik lampu penerangan jalan umum (LPJU) dan drainase gang',
+    purpose: 'Pelaporan kerusakan & pengajuan titik lampu penerangan jalan umum (LPJU)',
   },
   {
     id: 'guest_samarinda_05',
@@ -205,7 +205,7 @@ export const SAMPLE_SAMARINDA_GUESTS: GuestEntry[] = [
     organizationOrAddress: 'RT 17 Kelurahan Lempake, Samarinda Utara',
     phoneNumber: '+6282149887711',
     divisionId: 'PSU',
-    purpose: 'Pengajuan titik lampu penerangan jalan umum (LPJU) baru dan sarana bermain anak lingkungan gang',
+    purpose: 'Pengajuan titik baru lampu penerangan jalan umum (LPJU) di lingkungan permukiman warga',
   },
   {
     id: 'guest_samarinda_18',
