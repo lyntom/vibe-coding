@@ -15,6 +15,8 @@ import { AdminGuestTable } from '../components/admin/AdminGuestTable';
 import { AdminGuestModal } from '../components/admin/AdminGuestModal';
 import { AdminDetailModal } from '../components/admin/AdminDetailModal';
 import { AdminPrintReport } from '../components/admin/AdminPrintReport';
+import { AdminResetModal } from '../components/admin/AdminResetModal';
+import { AdminDeleteModal } from '../components/admin/AdminDeleteModal';
 
 export const AdminPage: React.FC = () => {
   const [allEntries, setAllEntries] = useState<GuestEntry[]>([]);
@@ -35,6 +37,9 @@ export const AdminPage: React.FC = () => {
   const [guestToEdit, setGuestToEdit] = useState<GuestEntry | null>(null);
   const [guestToView, setGuestToView] = useState<GuestEntry | null>(null);
   const [isPrintModalOpen, setIsPrintModalOpen] = useState(false);
+  const [isResetModalOpen, setIsResetModalOpen] = useState(false);
+  const [guestToDelete, setGuestToDelete] = useState<GuestEntry | null>(null);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const fetchGuests = async () => {
     setIsLoading(true);
@@ -122,15 +127,24 @@ export const AdminPage: React.FC = () => {
     await fetchGuests();
   };
 
-  const handleDeleteGuest = async (id: string) => {
+  const handleDeleteGuest = (id: string) => {
     const target = allEntries.find((g) => g.id === id);
-    const confirmMessage = target
-      ? `Apakah Anda yakin ingin menghapus data buku tamu atas nama "${target.fullName}" (${target.ticketNumber})?`
-      : 'Apakah Anda yakin ingin menghapus data buku tamu ini?';
+    if (target) {
+      setGuestToDelete(target);
+    }
+  };
 
-    if (window.confirm(confirmMessage)) {
-      await guestService.deleteGuest(id);
+  const handleConfirmDelete = async () => {
+    if (!guestToDelete) return;
+    setIsDeleting(true);
+    try {
+      await guestService.deleteGuest(guestToDelete.id);
       await fetchGuests();
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsDeleting(false);
+      setGuestToDelete(null);
     }
   };
 
@@ -155,23 +169,20 @@ export const AdminPage: React.FC = () => {
     URL.revokeObjectURL(url);
   };
 
-  const handleResetSeedData = async () => {
-    if (
-      window.confirm(
-        'Perhatian: Tindakan ini akan mengembalikan seluruh data buku tamu ke 18 data sampel realistis Disperkim Kota Samarinda. Lanjutkan?'
-      )
-    ) {
-      setIsResetting(true);
-      try {
-        const fresh = await guestService.resetToSampleData();
-        setAllEntries(fresh);
-        alert('Berhasil mereset data! 18 data sampel realistis Samarinda telah dimuat.');
-      } catch (err) {
-        console.error(err);
-        alert('Gagal mereset data sampel.');
-      } finally {
-        setIsResetting(false);
-      }
+  const handleOpenResetModal = () => {
+    setIsResetModalOpen(true);
+  };
+
+  const handleConfirmReset = async () => {
+    setIsResetting(true);
+    try {
+      const fresh = await guestService.resetToSampleData();
+      setAllEntries(fresh);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsResetting(false);
+      setIsResetModalOpen(false);
     }
   };
 
@@ -184,7 +195,7 @@ export const AdminPage: React.FC = () => {
           onOpenNewGuestModal={handleOpenNewGuestModal}
           onDownloadCSV={handleDownloadCSV}
           onOpenPrintModal={() => setIsPrintModalOpen(true)}
-          onResetSeedData={handleResetSeedData}
+          onResetSeedData={handleOpenResetModal}
           isResetting={isResetting}
         />
 
@@ -242,6 +253,22 @@ export const AdminPage: React.FC = () => {
         isOpen={isPrintModalOpen}
         entries={filteredEntries}
         onClose={() => setIsPrintModalOpen(false)}
+      />
+
+      {/* Modal Konfirmasi Reset Sampel */}
+      <AdminResetModal
+        isOpen={isResetModalOpen}
+        onClose={() => setIsResetModalOpen(false)}
+        onConfirm={handleConfirmReset}
+        isLoading={isResetting}
+      />
+
+      {/* Modal Konfirmasi Hapus Tamu */}
+      <AdminDeleteModal
+        guest={guestToDelete}
+        onClose={() => setGuestToDelete(null)}
+        onConfirm={handleConfirmDelete}
+        isLoading={isDeleting}
       />
     </div>
   );
