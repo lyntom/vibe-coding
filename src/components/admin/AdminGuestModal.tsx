@@ -146,7 +146,7 @@ export const AdminGuestModal: React.FC<AdminGuestModalProps> = ({
               maxLength={100}
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
-              placeholder="Contoh: Ir. H. Hendra Saputra"
+              placeholder="Contoh: Tofan. S.T"
               className="w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-xl border border-outline-variant/60 bg-surface-container-low/40 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-[#374774]"
             />
             {errors.fullName && <p className="text-xs text-error mt-1">{errors.fullName}</p>}

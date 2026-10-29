@@ -145,7 +145,7 @@ export const GuestForm: React.FC<GuestFormProps> = ({
                     setFullName(e.target.value);
                     if (errors.fullName) setErrors((prev) => ({ ...prev, fullName: '' }));
                   }}
-                  placeholder="Contoh: Ir. H. Hendra Saputra"
+                  placeholder="Contoh: Tofan. S.T"
                   className={`w-full pl-11 pr-4 py-3 text-sm sm:text-base rounded-xl border bg-surface-container-low/40 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-[#374774] transition-all ${
                     errors.fullName ? 'border-error ring-1 ring-error' : 'border-outline-variant/60'
                   }`}
