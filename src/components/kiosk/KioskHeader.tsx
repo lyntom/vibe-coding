@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { User, Building2 } from 'lucide-react';
+import { Building2 } from 'lucide-react';
 
 export const KioskHeader: React.FC = () => {
   const location = useLocation();
@@ -47,9 +47,6 @@ export const KioskHeader: React.FC = () => {
               Portal Petugas
             </Link>
           </nav>
-          <div className="w-8 h-8 rounded-full bg-[#20305c] border border-white/20 flex items-center justify-center shrink-0 text-[#EAB630]">
-            <User className="w-4 h-4" />
-          </div>
         </div>
       </div>
 
