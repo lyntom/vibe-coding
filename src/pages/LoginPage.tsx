@@ -9,7 +9,6 @@ import {
   EyeOff,
   ArrowLeft,
   KeyRound,
-  ShieldCheck,
   AlertCircle,
   CheckCircle2,
   Sparkles,
@@ -85,10 +84,6 @@ export const LoginPage: React.FC = () => {
               <div className="w-16 h-16 rounded-2xl bg-[#374774] text-[#EAB630] flex items-center justify-center mb-3 shadow-md">
                 <Building2 className="w-9 h-9" />
               </div>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-low text-[#374774] text-xs font-bold border border-outline-variant/30 mb-2">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#EAB630]" />
-                Sistem Akses Internal Terotentikasi
-              </span>
               <h1 className="text-2xl sm:text-3xl font-extrabold text-on-surface font-display">
                 Portal Masuk Petugas Piket
               </h1>
