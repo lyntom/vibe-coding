@@ -34,9 +34,9 @@ export const HelperChips: React.FC<HelperChipsProps> = ({
     <div className="w-full relative">
       {/* Toast Notification Mengambang */}
       {toastMessage && (
-        <div className="fixed top-24 left-1/2 -translate-x-1/2 z-50 animate-bounce transition-all">
-          <div className="bg-[#374774] text-white px-5 py-2.5 rounded-full shadow-2xl flex items-center gap-2.5 text-xs sm:text-sm font-bold border border-[#EAB630]/60">
-            <CheckCircle2 className="w-4 h-4 text-[#EAB630] shrink-0" />
+        <div className="fixed inset-x-0 top-32 sm:top-24 z-50 flex items-center justify-center pointer-events-none px-4 animate-in fade-in duration-200">
+          <div className="bg-[#374774] text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-full shadow-2xl flex items-center gap-2.5 text-xs sm:text-sm font-bold border-2 border-[#EAB630] animate-bounce pointer-events-auto max-w-md mx-auto text-center">
+            <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#EAB630] shrink-0" />
             <span>{toastMessage}</span>
           </div>
         </div>
