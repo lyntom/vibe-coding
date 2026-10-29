@@ -27,7 +27,7 @@ export const KioskHero: React.FC<KioskHeroProps> = ({ onOpenQrModal }) => {
         <div className="flex flex-col gap-2 max-w-3xl">
           <div className="flex items-center gap-2.5">
             <span className="bg-[#374774] text-white text-xs px-3 py-1 rounded-full uppercase tracking-wider font-bold border border-[#EAB630]/40">
-              Portal Layanan Kiosk 2026
+              Portal Layanan 2026
             </span>
             <span className="text-on-surface-variant text-xs font-semibold">
               Versi Digital v2.4 (WITA)
