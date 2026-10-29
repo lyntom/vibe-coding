@@ -32,7 +32,9 @@ export const KioskFooter: React.FC = () => {
             </div>
             <div className="flex items-center gap-2 text-xs text-on-surface-variant">
               <Mail className="w-4 h-4 text-[#374774] shrink-0" />
-              <span>disperkim@samarindakota.go.id</span>
+              <a href="mailto:dinaspkp2019@gmail.com" className="hover:underline">
+                dinaspkp2019@gmail.com
+              </a>
             </div>
           </div>
         </div>

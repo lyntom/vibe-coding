@@ -70,7 +70,7 @@ export const AdminPrintReport: React.FC<AdminPrintReportProps> = ({
               Jl. H. Achmad Amins, Gn. Lingai, Kec. Sungai Pinang, Kota Samarinda, Kalimantan Timur 75243
             </p>
             <p className="text-xs text-slate-600">
-              Telp/WA: 085111302536 • Laman: samarindakota.go.id • Pos-el: disperkim@samarindakota.go.id
+              Telp/WA: 085111302536 • Laman: samarindakota.go.id • Pos-el: dinaspkp2019@gmail.com
             </p>
           </div>
           {/* Garis Tipis Tambahan Kop Surat */}
