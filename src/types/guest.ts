@@ -69,8 +69,8 @@ export const DIVISIONS_METADATA: Record<DivisionId, DivisionMetadata> = {
     name: 'Sekretariat',
     shortName: 'Sekretariat',
     subtitle: 'Umum & Kepegawaian',
-    floorBadge: 'Lantai 1 - Sayap Kiri',
-    roomGuide: 'Lantai 1 - Ruang Resepsionis & Tata Usaha Utama',
+    floorBadge: 'Lantai 1',
+    roomGuide: 'Lantai 1',
     description:
       'Administrasi persuratan dinas, disposisi pimpinan, arsip kepegawaian, verifikasi SPJ keuangan, logistik kantor, serta pengajuan PKL & Magang.',
     quickChipLabel: 'Antar Surat Masuk / Magang / Audiensi',
@@ -81,8 +81,8 @@ export const DIVISIONS_METADATA: Record<DivisionId, DivisionMetadata> = {
     name: 'Bidang Perumahan',
     shortName: 'Bidang Perumahan',
     subtitle: 'Tata Kelola & Developer',
-    floorBadge: 'Lantai 2 - Ruang 204',
-    roomGuide: 'Lantai 2 - Ruang 204 (Ruang Kerja Bidang Perumahan Formal)',
+    floorBadge: 'Lantai 2',
+    roomGuide: 'Lantai 2',
     description:
       'Koordinasi dan serah terima fasilitas umum/sosial (PSU) dari developer, verifikasi site plan permukiman, dan regulasi pembangunan hunian formal.',
     quickChipLabel: 'Penyerahan PSU Developer',
@@ -93,8 +93,8 @@ export const DIVISIONS_METADATA: Record<DivisionId, DivisionMetadata> = {
     name: 'Bidang Kawasan Permukiman',
     shortName: 'Bid. Kawasan Permukiman',
     subtitle: 'RTLH & Penataan Kumuh',
-    floorBadge: 'Lantai 2 - Ruang 207',
-    roomGuide: 'Lantai 2 - Ruang 207 (Ruang Layanan Masyarakat & Validasi RTLH)',
+    floorBadge: 'Lantai 2',
+    roomGuide: 'Lantai 2',
     description:
       'Konsultasi & validasi program Bantuan Stimulan Rumah Swadaya (BSPS / RTLH), revitalisasi sanitasi tepian sungai Mahakam, dan kawasan kumuh terpadu.',
     quickChipLabel: 'Bantuan RTLH / Bedah Rumah',
@@ -105,8 +105,8 @@ export const DIVISIONS_METADATA: Record<DivisionId, DivisionMetadata> = {
     name: 'Bidang Prasarana, Sarana, dan Utilitas Umum (PSU)',
     shortName: 'Bidang PSU',
     subtitle: 'Lampu Jalan & Utilitas',
-    floorBadge: 'Lantai 1 - Sayap Kanan',
-    roomGuide: 'Lantai 1 - Sayap Kanan (Ruang Pengaduan & Teknisi Sarana Utilitas)',
+    floorBadge: 'Lantai 2',
+    roomGuide: 'Lantai 2',
     description:
       'Pelaporan perbaikan LPJU permukiman, pengajuan titik lampu jalan baru, drainase lingkungan gang, sarana bermain publik, dan pemeliharaan utilitas warga.',
     quickChipLabel: 'Perbaikan / Pasang Lampu Jalan Permukiman',
