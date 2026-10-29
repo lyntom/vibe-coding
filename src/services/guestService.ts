@@ -2,8 +2,19 @@ import { GuestEntry, GuestInputPayload } from '../types/guest';
 
 const GUESTS_STORAGE_KEY = 'etamu_disperkim_guests_v1';
 
-// In-memory fallback jika localStorage tidak tersedia / diblokir / penuh
+// In-memory fallback jika localStorage tidak tersedia / diblokir / mode private
 let inMemoryFallback: GuestEntry[] | null = null;
+
+function safeGetLocalStorage(): Storage | null {
+  try {
+    if (typeof window !== 'undefined' && 'localStorage' in window && window.localStorage) {
+      return window.localStorage;
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
 
 /**
  * 18 Data Sampel Realistis Kota Samarinda (Sesuai Konteks Disperkim)
@@ -214,14 +225,24 @@ export const SAMPLE_SAMARINDA_GUESTS: GuestEntry[] = [
  */
 function readStorage(): GuestEntry[] {
   try {
-    const raw = localStorage.getItem(GUESTS_STORAGE_KEY);
+    const storage = safeGetLocalStorage();
+    if (!storage) {
+      if (!inMemoryFallback) inMemoryFallback = [...SAMPLE_SAMARINDA_GUESTS];
+      return inMemoryFallback;
+    }
+
+    const raw = storage.getItem(GUESTS_STORAGE_KEY);
     if (!raw) {
-      // Inisialisasi awal dengan data sampel jika belum pernah ada
       const initial = [...SAMPLE_SAMARINDA_GUESTS];
-      localStorage.setItem(GUESTS_STORAGE_KEY, JSON.stringify(initial));
+      try {
+        storage.setItem(GUESTS_STORAGE_KEY, JSON.stringify(initial));
+      } catch (e) {
+        console.warn('Storage setItem fallback:', e);
+      }
       inMemoryFallback = initial;
       return initial;
     }
+
     const parsed = JSON.parse(raw) as GuestEntry[];
     inMemoryFallback = parsed;
     return parsed;
@@ -240,7 +261,10 @@ function readStorage(): GuestEntry[] {
 function writeStorage(entries: GuestEntry[]): void {
   inMemoryFallback = entries;
   try {
-    localStorage.setItem(GUESTS_STORAGE_KEY, JSON.stringify(entries));
+    const storage = safeGetLocalStorage();
+    if (storage) {
+      storage.setItem(GUESTS_STORAGE_KEY, JSON.stringify(entries));
+    }
   } catch (err) {
     console.warn('Storage write failed, preserved in memory only:', err);
   }
@@ -251,19 +275,17 @@ export const guestService = {
    * Mengambil semua daftar tamu
    */
   async getAllGuests(): Promise<GuestEntry[]> {
-    await new Promise((resolve) => setTimeout(resolve, 80)); // Asinkron
+    await new Promise((resolve) => setTimeout(resolve, 80));
     return readStorage();
   },
 
   /**
-   * Menambahkan entri tamu baru (dipanggil Kiosk atau Admin)
+   * Menambahkan entri tamu baru
    */
   async createGuest(payload: GuestInputPayload): Promise<GuestEntry> {
     await new Promise((resolve) => setTimeout(resolve, 120));
 
     const currentEntries = readStorage();
-
-    // Hitung nomor antrean berbasis total entri
     const nextQueueNum = currentEntries.length + 101;
     const ticketNumber = `TAMU-2026-${String(nextQueueNum).padStart(3, '0')}`;
 
@@ -362,7 +384,6 @@ export const guestService = {
     const sanitizeCell = (text: string): string => {
       if (!text) return '""';
       let clean = String(text).trim();
-      // Sanitasi CSV Formula Injection: awalan =, +, -, @, \t, \r diberi kutip satu di depannya
       if (/^[=+\-@\t\r]/.test(clean)) {
         clean = `'${clean}`;
       }

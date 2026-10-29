@@ -12,20 +12,39 @@ export interface AuthSession {
 
 const AUTH_STORAGE_KEY = 'etamu_disperkim_auth_session_v1';
 
+// In-memory session fallback jika browser memblokir storage / mode incognito
+let inMemoryAuthSession: AuthSession | null = null;
+
+function safeGetStorage(type: 'session' | 'local'): Storage | null {
+  try {
+    if (typeof window === 'undefined') return null;
+    const s = type === 'session' ? window.sessionStorage : window.localStorage;
+    return s || null;
+  } catch {
+    return null;
+  }
+}
+
 export const authService = {
   /**
    * Cek apakah ada sesi aktif di sessionStorage atau localStorage
    */
   isAuthenticated(): boolean {
     try {
+      if (inMemoryAuthSession?.token) return true;
+
+      const sessionStorageRef = safeGetStorage('session');
+      const localStorageRef = safeGetStorage('local');
+
       const sessionStr =
-        sessionStorage.getItem(AUTH_STORAGE_KEY) ||
-        localStorage.getItem(AUTH_STORAGE_KEY);
+        sessionStorageRef?.getItem(AUTH_STORAGE_KEY) ||
+        localStorageRef?.getItem(AUTH_STORAGE_KEY);
+
       if (!sessionStr) return false;
       const session = JSON.parse(sessionStr) as AuthSession;
       return Boolean(session?.token);
     } catch {
-      return false;
+      return Boolean(inMemoryAuthSession?.token);
     }
   },
 
@@ -34,13 +53,19 @@ export const authService = {
    */
   getCurrentSession(): AuthSession | null {
     try {
+      if (inMemoryAuthSession) return inMemoryAuthSession;
+
+      const sessionStorageRef = safeGetStorage('session');
+      const localStorageRef = safeGetStorage('local');
+
       const sessionStr =
-        sessionStorage.getItem(AUTH_STORAGE_KEY) ||
-        localStorage.getItem(AUTH_STORAGE_KEY);
+        sessionStorageRef?.getItem(AUTH_STORAGE_KEY) ||
+        localStorageRef?.getItem(AUTH_STORAGE_KEY);
+
       if (!sessionStr) return null;
       return JSON.parse(sessionStr) as AuthSession;
     } catch {
-      return null;
+      return inMemoryAuthSession;
     }
   },
 
@@ -54,7 +79,6 @@ export const authService = {
     pass: string,
     rememberMe = false
   ): Promise<{ success: boolean; message?: string }> {
-    // Simulasi jeda asinkron jaringan
     await new Promise((resolve) => setTimeout(resolve, 600));
 
     const cleanUser = username.trim();
@@ -68,15 +92,19 @@ export const authService = {
         loginAt: new Date().toISOString(),
       };
 
+      inMemoryAuthSession = sessionData;
+
       try {
         const serialized = JSON.stringify(sessionData);
         if (rememberMe) {
-          localStorage.setItem(AUTH_STORAGE_KEY, serialized);
+          const lStore = safeGetStorage('local');
+          lStore?.setItem(AUTH_STORAGE_KEY, serialized);
         } else {
-          sessionStorage.setItem(AUTH_STORAGE_KEY, serialized);
+          const sStore = safeGetStorage('session');
+          sStore?.setItem(AUTH_STORAGE_KEY, serialized);
         }
       } catch (err) {
-        console.error('Gagal menyimpan sesi:', err);
+        console.warn('Gagal menyimpan sesi:', err);
       }
 
       return { success: true };
@@ -92,11 +120,14 @@ export const authService = {
    * Logout dan bersihkan token sesi
    */
   async logout(): Promise<void> {
+    inMemoryAuthSession = null;
     try {
-      sessionStorage.removeItem(AUTH_STORAGE_KEY);
-      localStorage.removeItem(AUTH_STORAGE_KEY);
+      const sStore = safeGetStorage('session');
+      const lStore = safeGetStorage('local');
+      sStore?.removeItem(AUTH_STORAGE_KEY);
+      lStore?.removeItem(AUTH_STORAGE_KEY);
     } catch (err) {
-      console.error('Gagal menghapus sesi:', err);
+      console.warn('Gagal menghapus sesi:', err);
     }
   },
 };

@@ -5,6 +5,46 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>E-Tamu Disperkim Samarinda | Buku Tamu Digital</title>
+    <!-- Polyfill aman untuk kompatibilitas ekstensi peramban & isolasi Storage -->
+    <script>
+      (function () {
+        try {
+          if (typeof window !== 'undefined' && window.Storage) {
+            var origSetItem = Storage.prototype.setItem;
+            Storage.prototype.setItem = function (key, value) {
+              try {
+                origSetItem.call(this, key, value);
+              } catch (e) {
+                console.warn('Storage setItem:', e);
+              }
+              return Promise.resolve();
+            };
+
+            var origRemoveItem = Storage.prototype.removeItem;
+            Storage.prototype.removeItem = function (key) {
+              try {
+                origRemoveItem.call(this, key);
+              } catch (e) {
+                console.warn('Storage removeItem:', e);
+              }
+              return Promise.resolve();
+            };
+
+            var origClear = Storage.prototype.clear;
+            Storage.prototype.clear = function () {
+              try {
+                origClear.call(this);
+              } catch (e) {
+                console.warn('Storage clear:', e);
+              }
+              return Promise.resolve();
+            };
+          }
+        } catch (err) {
+          console.warn('Storage patch init:', err);
+        }
+      })();
+    </script>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
