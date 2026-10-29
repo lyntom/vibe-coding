@@ -15,7 +15,7 @@ export const KioskFooter: React.FC = () => {
               </span>
             </div>
             <p className="text-xs text-on-surface-variant leading-relaxed">
-              Jl. Dahlia No. 02, Bugis, Kec. Samarinda Kota, Kota Samarinda, Kalimantan Timur 75121
+              Jl. H. Achmad Amins, Gn. Lingai, Kec. Sungai Pinang, Kota Samarinda, Kalimantan Timur 75243
             </p>
           </div>
 
@@ -26,7 +26,9 @@ export const KioskFooter: React.FC = () => {
             </span>
             <div className="flex items-center gap-2 text-xs text-on-surface-variant">
               <Phone className="w-4 h-4 text-[#374774] shrink-0" />
-              <span>Call Center: (0541) 741-526</span>
+              <a href="tel:085111302536" className="hover:underline">
+                Kontak / Call Center: 085111302536
+              </a>
             </div>
             <div className="flex items-center gap-2 text-xs text-on-surface-variant">
               <Mail className="w-4 h-4 text-[#374774] shrink-0" />

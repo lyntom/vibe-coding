@@ -67,10 +67,10 @@ export const AdminPrintReport: React.FC<AdminPrintReportProps> = ({
               DINAS PERUMAHAN DAN KAWASAN PERMUKIMAN
             </h2>
             <p className="text-xs sm:text-sm mt-1 text-slate-700">
-              Jl. Dahlia No. 02, Bugis, Kec. Samarinda Kota, Kota Samarinda, Kalimantan Timur 75121
+              Jl. H. Achmad Amins, Gn. Lingai, Kec. Sungai Pinang, Kota Samarinda, Kalimantan Timur 75243
             </p>
             <p className="text-xs text-slate-600">
-              Telp: (0541) 741-526 • Laman: samarindakota.go.id • Pos-el: disperkim@samarindakota.go.id
+              Telp/WA: 085111302536 • Laman: samarindakota.go.id • Pos-el: disperkim@samarindakota.go.id
             </p>
           </div>
           {/* Garis Tipis Tambahan Kop Surat */}
