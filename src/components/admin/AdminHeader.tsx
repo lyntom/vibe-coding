@@ -38,7 +38,7 @@ export const AdminHeader: React.FC<AdminHeaderProps> = ({ currentSession }) => {
 
           {/* User Session & Actions */}
           <div className="flex items-center gap-3">
-            {/* Tautan Langsung ke Mode Kiosk */}
+            {/* Tautan Langsung ke Mode Buku Tamu */}
             <Link
               to="/"
               target="_blank"
@@ -46,7 +46,7 @@ export const AdminHeader: React.FC<AdminHeaderProps> = ({ currentSession }) => {
               className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-[#dbe1ff] hover:text-white hover:bg-white/10 border border-white/20 transition-all"
             >
               <ExternalLink className="w-3.5 h-3.5 text-[#EAB630]" />
-              <span>Buka Mode Kiosk</span>
+              <span>Buka Mode Buku Tamu</span>
             </Link>
 
             {/* Badge Petugas */}
