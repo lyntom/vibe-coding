@@ -307,7 +307,7 @@ export const GuestForm: React.FC<GuestFormProps> = ({
                 ) : (
                   <>
                     <Send className="w-5 h-5 text-[#EAB630]" />
-                    <span>Simpan & Ambil Nomor Antrean</span>
+                    <span>Simpan</span>
                   </>
                 )}
               </button>
