@@ -357,7 +357,7 @@ export const GuestForm: React.FC<GuestFormProps> = ({
             </div>
             <p className="text-[11px] text-on-surface-variant mt-2 flex items-center gap-1.5">
               <CheckCircle className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-              <span>Sistem antrean sinkron secara real-time.</span>
+              <span>Jumlah tamu sinkron secara real-time.</span>
             </p>
           </div>
         </div>
