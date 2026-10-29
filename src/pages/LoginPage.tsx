@@ -92,12 +92,12 @@ export const LoginPage: React.FC = () => {
               </p>
             </div>
 
-            {/* Kotak Kredensial Pengujian MVP */}
+            {/* Kotak Kredensial Pengujian */}
             <div className="mb-6 bg-[#FFF9E6] border border-[#EAB630]/50 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-[#785a00]">
               <div className="flex items-start gap-2.5">
                 <KeyRound className="w-4 h-4 text-[#EAB630] shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-bold block">Kredensial Pengujian MVP:</span>
+                  <span className="font-bold block">Kredensial Pengujian:</span>
                   <span>
                     User: <strong className="font-mono text-on-surface">admin</strong> • Pass:{' '}
                     <strong className="font-mono text-on-surface">disperkim2026</strong>
