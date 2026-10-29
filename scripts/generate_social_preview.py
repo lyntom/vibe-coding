@@ -59,12 +59,12 @@ def create_social_preview(output_path="public/github-social-preview.png"):
         f_sub = ImageFont.truetype(font_regular, 20)
         f_desc = ImageFont.truetype(font_regular, 16)
         f_card_label = ImageFont.truetype(font_bold, 13)
-        f_card_ticket = ImageFont.truetype(font_bold, 50)
-        f_card_body = ImageFont.truetype(font_semibold, 16)
-        f_card_small = ImageFont.truetype(font_regular, 13)
+        f_name = ImageFont.truetype(font_bold, 20)
+        f_card_body = ImageFont.truetype(font_semibold, 15)
+        f_card_small = ImageFont.truetype(font_regular, 14)
         f_tech = ImageFont.truetype(font_semibold, 14)
     except Exception:
-        f_badge = f_title = f_sub = f_desc = f_card_label = f_card_ticket = f_card_body = f_card_small = f_tech = ImageFont.load_default()
+        f_badge = f_title = f_sub = f_desc = f_card_label = f_name = f_card_body = f_card_small = f_tech = ImageFont.load_default()
 
     # 6. Top Decorative Gold Border
     draw.rectangle([0, 0, width, 5], fill=(234, 182, 48, 255))
@@ -148,9 +148,9 @@ def create_social_preview(output_path="public/github-social-preview.png"):
         t_x += t_w + 12
 
     # 8. RIGHT SIDE: MOCKUP GLASSMORPHISM UI CARD
-    card_x = 750
+    card_x = 740
     card_y = 95
-    card_w = 460
+    card_w = 470
     card_h = 450
 
     # Card shadow
@@ -178,7 +178,7 @@ def create_social_preview(output_path="public/github-social-preview.png"):
     img = Image.alpha_composite(img, card_bg)
     draw = ImageDraw.Draw(img)
 
-    # Inside Card: Top Header
+    # Inside Card: Top Header (tanpa "LIVE WITA")
     draw.rounded_rectangle(
         [card_x + 1, card_y + 1, card_x + card_w - 1, card_y + 56],
         radius=24,
@@ -187,55 +187,49 @@ def create_social_preview(output_path="public/github-social-preview.png"):
     draw.rectangle([card_x + 1, card_y + 36, card_x + card_w - 1, card_y + 56], fill=(32, 48, 92, 255))
     draw.line([(card_x, card_y + 56), (card_x + card_w, card_y + 56)], fill=(234, 182, 48, 80), width=1)
 
-    draw.text((card_x + 24, card_y + 18), "DISPERKIM SAMARINDA • E-TAMU", fill=(255, 223, 156, 255), font=f_card_label)
-    # Online status green dot
-    draw.ellipse([card_x + card_w - 100, card_y + 22, card_x + card_w - 92, card_y + 30], fill=(52, 211, 153, 255))
-    draw.text((card_x + card_w - 84, card_y + 18), "LIVE WITA", fill=(52, 211, 153, 255), font=f_badge)
+    draw.text((card_x + 24, card_y + 18), "DISPERKIM SAMARINDA • PANEL BUKU TAMU", fill=(255, 223, 156, 255), font=f_card_label)
 
-    # Ticket Container inside Card
-    t_box_y = card_y + 75
+    # Title Banner inside Card
+    sub_box_y = card_y + 75
     draw.rounded_rectangle(
-        [card_x + 24, t_box_y, card_x + card_w - 24, t_box_y + 125],
-        radius=18,
-        fill=(14, 23, 46, 255),
-        outline=(234, 182, 48, 120),
+        [card_x + 24, sub_box_y, card_x + card_w - 24, sub_box_y + 38],
+        radius=10,
+        fill=(32, 48, 92, 180),
+        outline=(234, 182, 48, 80),
         width=1
     )
-    draw.text((card_x + 44, t_box_y + 16), "NOMOR TIKET ANTREAN TAMU", fill=(219, 225, 255, 200), font=f_card_label)
-    draw.text((card_x + 44, t_box_y + 40), "A-018", fill=(255, 223, 156, 255), font=f_card_ticket)
+    draw.text((card_x + 40, sub_box_y + 10), "RINCIAN CATATAN KUNJUNGAN TAMU", fill=(219, 225, 255, 255), font=f_card_label)
 
-    draw.text((card_x + card_w - 170, t_box_y + 36), "STATUS:", fill=(140, 160, 200, 200), font=f_card_label)
-    draw.rounded_rectangle(
-        [card_x + card_w - 170, t_box_y + 56, card_x + card_w - 44, t_box_y + 86],
-        radius=8,
-        fill=(16, 185, 129, 30),
-        outline=(16, 185, 129, 120),
-        width=1
-    )
-    draw.text((card_x + card_w - 156, t_box_y + 63), "TERCATAT", fill=(52, 211, 153, 255), font=f_badge)
-
-    # Guest Info inside Card
-    info_y = t_box_y + 145
+    # Guest Info inside Card (dengan nama Tofan, S.T)
+    info_y = sub_box_y + 56
     rows = [
-        ("Nama Tamu:", "Rahmat Hidayat, S.T."),
-        ("Instansi / Asal:", "PT Kaltim Jaya Bangun Persada (Swasta)"),
-        ("Bidang Tujuan:", "Bidang Perumahan (Lantai 2)"),
-        ("Keperluan:", "Konsultasi Teknis Siteplan PSU Perumahan"),
+        ("Nama Tamu:", "Tofan, S.T", True),
+        ("Instansi / Asal:", "PT Kaltim Jaya Bangun Persada", False),
+        ("Kategori Tamu:", "Masyarakat / Swasta", False),
+        ("Bidang Tujuan:", "Bidang Perumahan (Lantai 2)", False),
+        ("Keperluan:", "Konsultasi Teknis Siteplan PSU Perumahan", False),
+        ("Waktu Registrasi:", "Pukul 09.30 WITA", False),
     ]
 
-    for label, val in rows:
+    for label, val, is_highlight in rows:
+        # Subtle horizontal divider
+        draw.line([(card_x + 24, info_y - 8), (card_x + card_w - 24, info_y - 8)], fill=(255, 255, 255, 15), width=1)
+        
         draw.text((card_x + 28, info_y), label, fill=(160, 180, 220, 220), font=f_card_small)
-        draw.text((card_x + 155, info_y), val, fill=(255, 255, 255, 255), font=f_card_body)
-        info_y += 42
+        val_color = (255, 223, 156, 255) if is_highlight else (255, 255, 255, 255)
+        val_font = f_name if is_highlight else f_card_body
+        draw.text((card_x + 160, info_y - (2 if is_highlight else 0)), val, fill=val_color, font=val_font)
+        info_y += 44
 
     # 9. Bottom Accent Line
     draw.rectangle([0, height - 6, width, height], fill=(234, 182, 48, 255))
     draw.rectangle([width // 2 - 250, height - 6, width // 2 + 250, height], fill=(255, 223, 156, 255))
 
     # Save
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
-    img.save(output_path, "PNG", optimize=True)
-    print(f"Social preview saved to {output_path}")
+    abs_output = os.path.abspath(output_path)
+    os.makedirs(os.path.dirname(abs_output), exist_ok=True)
+    img.save(abs_output, "PNG", optimize=True)
+    print(f"Social preview saved to {abs_output}")
 
 if __name__ == "__main__":
     create_social_preview("public/github-social-preview.png")
