@@ -91,8 +91,9 @@ export const AdminDivisionDistribution: React.FC<AdminDivisionDistributionProps>
                 <Clock className="w-3.5 h-3.5 text-[#EAB630]" />
                 <span>Jadwal Pelayanan Aktif (WITA)</span>
               </div>
-              <div>Senin – Kamis: 08.00 – 15.30</div>
-              <div>Jumat: 08.00 – 11.30</div>
+              <div>Senin – Kamis: 08.00 – 16.00 WITA</div>
+              <div>Jumat: 08.00 – 15.00 WITA</div>
+              <div className="text-on-surface-variant text-[10px]">Istirahat / Sholat: 11.30 – 13.00 WITA</div>
             </div>
           </div>
         </div>

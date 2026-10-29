@@ -328,15 +328,15 @@ export const GuestForm: React.FC<GuestFormProps> = ({
             <div className="space-y-2 text-xs text-on-surface">
               <div className="flex justify-between py-1 border-b border-outline-variant/20">
                 <span className="font-semibold">Senin – Kamis</span>
-                <span className="font-mono text-[#374774] font-bold">08.00 – 15.30 WITA</span>
+                <span className="font-mono text-[#374774] font-bold">08.00 – 16.00 WITA</span>
               </div>
               <div className="flex justify-between py-1 border-b border-outline-variant/20">
                 <span className="font-semibold">Jumat</span>
-                <span className="font-mono text-[#374774] font-bold">08.00 – 11.30 WITA</span>
+                <span className="font-mono text-[#374774] font-bold">08.00 – 15.00 WITA</span>
               </div>
               <div className="flex justify-between py-1">
                 <span className="text-on-surface-variant">Istirahat / Sholat</span>
-                <span className="text-on-surface-variant font-medium">12.00 – 13.00 WITA</span>
+                <span className="text-on-surface-variant font-medium">11.30 – 13.00 WITA</span>
               </div>
             </div>
           </div>
