@@ -96,11 +96,6 @@ export const AdminDivisionDistribution: React.FC<AdminDivisionDistributionProps>
             </div>
           </div>
         </div>
-
-        <div className="pt-3 border-t border-outline-variant/30 text-[11px] text-on-surface-variant">
-          <span>Pengesahan Laporan: </span>
-          <strong className="text-on-surface">MUHAMMAD IHSAN, S.Sos</strong> (NIP. 19850412 201001 1 008)
-        </div>
       </div>
     </div>
   );
